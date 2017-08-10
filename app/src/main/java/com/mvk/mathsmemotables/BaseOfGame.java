@@ -122,7 +122,7 @@ public class BaseOfGame extends Activity {
 
 //******************************** Equations generator *********************************************
 
-    //TODO: modify the method so its exclude the ranges deselected
+
     public void generateEquations(){
 
         for (int i=0; i < firstElements.length; i++){
@@ -130,8 +130,13 @@ public class BaseOfGame extends Activity {
             int randomNum2;
 
             do {
+                //Loop checks it the first number its within the range of tables
+                //selected in settings
+                do {
+                    randomNum1 = ThreadLocalRandom.current().nextInt(1, 9 + 1);
+                }while (!Controller.getInstance().checkNumber(randomNum1));
+
                 //number from 1 to 9 inclusive
-                randomNum1 = ThreadLocalRandom.current().nextInt(1, 9 + 1);
                 randomNum2 = ThreadLocalRandom.current().nextInt(1, 9 + 1);
 
 

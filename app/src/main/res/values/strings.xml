@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Maths Memo Tables</string>
+    <string name="textview">-</string>
 </resources>

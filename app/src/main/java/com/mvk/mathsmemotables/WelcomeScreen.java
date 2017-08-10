@@ -38,7 +38,8 @@ public class WelcomeScreen extends Activity {
     public void pickTables(){
         animateButtonClick(select);
         animateButtonClick(tables);
-
+        Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
     }
 
     private void animateButtonClick(ImageView imageView){

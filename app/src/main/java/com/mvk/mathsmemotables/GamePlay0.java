@@ -1,6 +1,7 @@
 package com.mvk.mathsmemotables;
 
 import android.animation.Animator;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,6 +40,13 @@ public class GamePlay0 extends BaseOfGame {
         elementsAllocation();
 
         hideValues();
+
+        setUpFonts(result1);
+        setUpFonts(result2);
+        setUpFonts(result3);
+        for (int i=0; i<selected.length; i++){
+            setUpFonts(getTextAtPosition(i+1));
+        }
     }
 
 //--------------------------------------OnClick Method----------------------------------------------
@@ -192,4 +200,14 @@ public void flipImage(final ImageView iv, final int position) {
             getTextAtPosition(i+1).setAlpha(0.0f);
         }
     }
+
+    //********************************* Set up fonts ***********************************************
+    public void setUpFonts(TextView textView){
+        //Set up font for provided TextView
+        Typeface berkshireSwash = Typeface.createFromAsset(getAssets(), "fonts/BerkshireSwash-Regular.ttf");
+        Typeface pacifico = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
+
+        textView.setTypeface(pacifico);
+    }
+
 }
