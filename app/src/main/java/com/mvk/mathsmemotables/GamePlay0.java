@@ -2,6 +2,7 @@ package com.mvk.mathsmemotables;
 
 import android.animation.Animator;
 import android.graphics.Typeface;
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,6 +48,15 @@ public class GamePlay0 extends BaseOfGame {
         for (int i=0; i<selected.length; i++){
             setUpFonts(getTextAtPosition(i+1));
         }
+
+//        ImageView img = (ImageView)findViewById(R.id.imageView);
+//        img.setBackgroundResource(R.drawable.monkey);
+//
+//        // Get the background, which has been compiled to an AnimationDrawable object.
+//        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
+//
+//        // Start the animation (looped playback by default).
+//        frameAnimation.start();
     }
 
 //--------------------------------------OnClick Method----------------------------------------------

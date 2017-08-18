@@ -4,6 +4,9 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
+import android.provider.ContactsContract;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,12 +23,25 @@ public class WelcomeScreen extends Activity {
     @BindView(R.id.select) ImageView select;
     @BindView(R.id.tables) ImageView tables;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
         ButterKnife.bind(this);
+
+//        ImageView img = (ImageView)findViewById(R.id.welcome_monkey);
+//        img.setBackgroundResource(R.drawable.welcome_monkey);
+//
+//        // Get the background, which has been compiled to an AnimationDrawable object.
+//        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
+//
+//        // Start the animation (looped playback by default).
+//        //frameAnimation.start();
+
     }
+
+
 
     @OnClick(R.id.playButton)
     public void startDefaultGame(){
