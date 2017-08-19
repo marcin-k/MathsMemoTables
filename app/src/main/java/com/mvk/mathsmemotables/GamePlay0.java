@@ -49,14 +49,13 @@ public class GamePlay0 extends BaseOfGame {
             setUpFonts(getTextAtPosition(i+1));
         }
 
-//        ImageView img = (ImageView)findViewById(R.id.imageView);
-//        img.setBackgroundResource(R.drawable.monkey);
-//
-//        // Get the background, which has been compiled to an AnimationDrawable object.
-//        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
-//
-//        // Start the animation (looped playback by default).
+        ImageView img = (ImageView)findViewById(R.id.clappingMonkey);
+        img.setImageResource(R.drawable.monkey);
+        // Get the background, which has been compiled to an AnimationDrawable object.
+        AnimationDrawable frameAnimation = (AnimationDrawable) img.getDrawable();
+        // Start the animation (looped playback by default).
 //        frameAnimation.start();
+
     }
 
 //--------------------------------------OnClick Method----------------------------------------------
