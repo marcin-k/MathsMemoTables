@@ -17,11 +17,11 @@
         android:layout_marginTop="8dp"
         android:text="2x Table"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.232"
-        app:layout_constraintHorizontal_bias="0.812" />
+        app:layout_constraintVertical_bias="0.234"
+        app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintLeft_toRightOf="@+id/oneBox" />
 
     <CheckBox
         android:id="@+id/threeBox"
@@ -37,7 +37,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.324"
-        app:layout_constraintHorizontal_bias="0.383" />
+        app:layout_constraintHorizontal_bias="0.351" />
 
     <CheckBox
         android:id="@+id/fourBox"
@@ -49,11 +49,11 @@
         android:layout_marginTop="8dp"
         android:text="4x Table"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.323"
-        app:layout_constraintHorizontal_bias="0.808" />
+        app:layout_constraintVertical_bias="0.324"
+        app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintLeft_toRightOf="@+id/threeBox" />
 
     <CheckBox
         android:id="@+id/fiveBox"
@@ -69,7 +69,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.407"
-        app:layout_constraintHorizontal_bias="0.383" />
+        app:layout_constraintHorizontal_bias="0.351" />
 
     <CheckBox
         android:id="@+id/sixBox"
@@ -81,11 +81,11 @@
         android:layout_marginTop="8dp"
         android:text="6x Table"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.409"
-        app:layout_constraintHorizontal_bias="0.808" />
+        app:layout_constraintVertical_bias="0.407"
+        app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintLeft_toRightOf="@+id/fiveBox" />
 
     <CheckBox
         android:id="@+id/sevenBox"
@@ -100,8 +100,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.491"
-        app:layout_constraintHorizontal_bias="0.383" />
+        app:layout_constraintVertical_bias="0.499"
+        app:layout_constraintHorizontal_bias="0.351" />
 
     <CheckBox
         android:id="@+id/eightBox"
@@ -113,11 +113,11 @@
         android:layout_marginTop="8dp"
         android:text="8x Table"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498"
-        app:layout_constraintHorizontal_bias="0.808" />
+        app:layout_constraintVertical_bias="0.499"
+        app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintLeft_toRightOf="@+id/sevenBox" />
 
     <CheckBox
         android:id="@+id/nineBox"
@@ -129,11 +129,11 @@
         android:layout_marginTop="8dp"
         android:text="9x Table"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/sevenBox"
+        app:layout_constraintRight_toRightOf="@+id/eightBox"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.585"
-        app:layout_constraintHorizontal_bias="0.607" />
+        app:layout_constraintVertical_bias="0.583"
+        app:layout_constraintHorizontal_bias="0.541" />
 
     <CheckBox
         android:id="@+id/oneBox"
@@ -145,9 +145,9 @@
         android:layout_marginTop="8dp"
         android:text="1x Table"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.383"
+        app:layout_constraintHorizontal_bias="0.351"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.234" />
+        app:layout_constraintVertical_bias="0.232" />
 </android.support.constraint.ConstraintLayout>

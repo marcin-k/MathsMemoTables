@@ -2,6 +2,7 @@ package com.mvk.mathsmemotables;
 
 import android.animation.Animator;
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,7 +18,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class BaseOfGame extends Activity {
 
-    //buttons
+    //cards
     int[] backButtons  = new int[28];
     int[] textButtons = new int[28];
 
@@ -29,6 +30,10 @@ public class BaseOfGame extends Activity {
     //position of elements array, used to randomly allocate elements
     int [] positions = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27};
 
+    //tracks flipped over cards
+    boolean[] selected;
+
+//*************************************** OnCreate *************************************************
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +70,7 @@ public class BaseOfGame extends Activity {
 
         shuffleArray(positions);
     }
+
 //*************************** Shuffling method for position array **********************************
     // Implementing Fisher–Yates shuffle
     //used to randomly allocate elements of the array
@@ -93,6 +99,7 @@ public class BaseOfGame extends Activity {
         TextView textView = (TextView)findViewById(textButtons[position-1]);
         return textView;
     }
+
 //***************************** Returns position for ImageView *************************************
     public int getButtonNumber(ImageView imageView) {
         int imageNumber = -1;
@@ -104,6 +111,7 @@ public class BaseOfGame extends Activity {
         }
         return imageNumber;
     }
+
 //********************* Get previously selected element position ***********************************
     public int positionOfAlreadySelectedElement(boolean[] array){
         int toReturn = -1;
@@ -121,8 +129,6 @@ public class BaseOfGame extends Activity {
     }
 
 //******************************** Equations generator *********************************************
-
-
     public void generateEquations(){
 
         for (int i=0; i < firstElements.length; i++){
@@ -196,4 +202,110 @@ public class BaseOfGame extends Activity {
         return numberToReturn;
     }
 
+//*************************** Deselects image animation ********************************************
+    public void deselectAll(){
+        for (int i = 0; i < backButtons.length; i++) {
+            if (selected[i]==true){
+                ImageView imageView = (ImageView)findViewById(backButtons[i]);
+                flipImage(imageView, i);
+            }
+        }
+    }
+
+//*************************** Flipping image animation *********************************************
+    public void flipImage(final ImageView iv, final int position) {
+        final Drawable drawable = getResources().getDrawable(R.drawable.button);
+        final Drawable drawable2 = getResources().getDrawable(R.drawable.button_selected);
+
+        iv.setRotationY(0f);
+
+        if (selected[position] == true) {
+            //duration of first half flip
+            iv.animate().setDuration(100);
+            iv.animate().rotationY(90f).setListener(new Animator.AnimatorListener() {
+
+                @Override
+                public void onAnimationStart(Animator animation) {
+                    hideReveal(iv, true);
+                }
+
+                @Override
+                public void onAnimationRepeat(Animator animation) {
+                }
+
+                @Override
+                public void onAnimationEnd(Animator animation) {
+
+                    iv.setImageDrawable(drawable);
+                    selected[position] = false;
+                    iv.setRotationY(270f);
+                    iv.animate().rotationY(360f).setListener(null);
+                    //duration of second half of flip
+                    iv.animate().setDuration(100);
+                }
+
+                @Override
+                public void onAnimationCancel(Animator animation) {
+                }
+            });
+        } else {
+            //duration of first half flip
+            iv.animate().setDuration(100);
+            iv.animate().rotationY(-90f).setListener(new Animator.AnimatorListener() {
+
+                @Override
+                public void onAnimationStart(Animator animation) {
+                }
+
+                @Override
+                public void onAnimationRepeat(Animator animation) {
+                }
+
+                @Override
+                public void onAnimationEnd(Animator animation) {
+
+                    hideReveal(iv, false);
+                    iv.setImageDrawable(drawable2);
+                    selected[position] = true;
+                    iv.setRotationY(-270f);
+                    iv.animate().rotationY(-360f).setListener(null);
+                    //duration of second half of flip
+                    iv.animate().setDuration(100);
+                }
+
+                @Override
+                public void onAnimationCancel(Animator animation) {
+                }
+            });
+        }
+
+    }
+
+//********************************* Hide/reveal value **********************************************
+    public void hideReveal(ImageView iv, boolean hide){
+        int position = getButtonNumber(iv);
+        if (hide){
+            getTextAtPosition(position).setAlpha(0.0f);
+        }
+        else{
+            getTextAtPosition(position).setAlpha(1.0f);
+        }
+    }
+//************************************* Flip All ***************************************************
+    public void hideValues(){
+        for(int i=0; i<selected.length; i++){
+            getTextAtPosition(i+1).setAlpha(0.0f);
+        }
+    }
+
+//************************************* Set up fonts ***********************************************
+    public void setUpFonts(TextView textView){
+        //Set up font for provided TextView
+        Typeface berkshireSwash = Typeface.createFromAsset(getAssets(),
+                "fonts/BerkshireSwash-Regular.ttf");
+        Typeface pacifico = Typeface.createFromAsset(getAssets(),
+                "fonts/Pacifico-Regular.ttf");
+
+        textView.setTypeface(pacifico);
+    }
 }

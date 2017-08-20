@@ -30,7 +30,7 @@ public class WelcomeScreen extends Activity {
     boolean letsMusicPlay;
 
 
-
+//*************************************** OnCreate *************************************************
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +47,7 @@ public class WelcomeScreen extends Activity {
 
     }
 
-
+//**************************** Navigation Buttons OnClick*******************************************
     @OnTouch(R.id.playButton)
     public boolean touchPlay(MotionEvent event) {
         if(event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -90,10 +90,9 @@ public class WelcomeScreen extends Activity {
             return true;
     }
 
+//************************** Navigation Button pressed animations **********************************
 
-    //-------------------------Button pressed animation------------------------------------
-
-    //on touch down
+    //on touch down - shrink
     private void animateButtonTouched(ImageView imageView){
         ObjectAnimator buttonXDown = ObjectAnimator.ofFloat(imageView, "scaleX", 1, 0.9f);
         ObjectAnimator buttonYDown = ObjectAnimator.ofFloat(imageView, "scaleY", 1, 0.9f);
@@ -104,7 +103,7 @@ public class WelcomeScreen extends Activity {
 
     }
 
-    //on release
+    //on release - resize to original size
     private void animateButtonReleased(ImageView imageView){
         ObjectAnimator buttonXUp = ObjectAnimator.ofFloat(imageView, "scaleX", 0.9f, 1);
         ObjectAnimator buttonYUp = ObjectAnimator.ofFloat(imageView, "scaleY", 0.9f, 1);
@@ -114,7 +113,8 @@ public class WelcomeScreen extends Activity {
         scalePlayButtonUp.start();
     }
 
-    //on release - changes the imageView to newImageView
+    //on release - resize to original size and changes the imageView to newImageView
+    // used for sound/no sound button
     private void animateButtonReleased(ImageView imageView, int newImageView){
         imageView.setImageResource(newImageView);
 

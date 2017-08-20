@@ -7,86 +7,96 @@ import android.util.Log;
  */
 
 class Controller {
+
+    //Minimal number of tables that needs to be selected
+    private final int MIN_NUM_OF_TABLES = 2;
+
     //booleans to change tables
-    boolean one;
-    boolean two;
-    boolean three;
-    boolean four;
-    boolean five;
-    boolean six;
-    boolean seven;
-    boolean eight;
-    boolean nine;
+    private boolean one;
+    private boolean two;
+    private boolean three;
+    private boolean four;
+    private boolean five;
+    private boolean six;
+    private boolean seven;
+    private boolean eight;
+    private boolean nine;
 
     private static final Controller ourInstance = new Controller();
-
     static Controller getInstance() {
         return ourInstance;
     }
 
+//*********************************** Constructor **************************************************
     private Controller() {
         //sets to default value of true
         one = two = three = four = five = six = seven = eight = nine = true;
     }
 
-    //disable or enable selected table
-    //return true if changed / false if can not be changed
-    public boolean enableDisableTable(String number){
+//************************* Disables or enables selected table *************************************
+    //flips the value for boolean table
+    public void enableDisableTable(String number){
         boolean toReturn;
         switch (number){
             case "one":
-                toReturn = flipValue(one);
+                if (one)
+                    one=false;
+                else
+                    one=true;
                 break;
             case "two":
-                toReturn = flipValue(two);
+                if (two)
+                    two=false;
+                else
+                    two=true;
                 break;
             case "three":
-                toReturn = flipValue(three);
+                if (three)
+                    three=false;
+                else
+                    three=true;
                 break;
             case "four":
-                toReturn = flipValue(four);
+                if (four)
+                    four=false;
+                else
+                    four=true;
                 break;
             case "five":
-                toReturn = flipValue(five);
+                if (five)
+                    five=false;
+                else
+                    five=true;
                 break;
             case "six":
-                toReturn = flipValue(six);
+                if (six)
+                    six=false;
+                else
+                    six=true;
                 break;
             case "seven":
-                toReturn = flipValue(seven);
+                if (seven)
+                    seven=false;
+                else
+                    seven=true;
                 break;
             case "eight":
-                toReturn = flipValue(eight);
+                if (eight)
+                    eight=false;
+                else
+                    eight=true;
                 break;
             case "nine":
-                toReturn = flipValue(nine);
-                break;
-            default:
-                toReturn = false;
+                if (nine)
+                    nine=false;
+                else
+                    nine=true;
                 break;
         }
-        return toReturn;
     }
 
-    //TODO: primitives are passed by value not referenced change the method!
-    //changes value of table opposite value if at least one more is selected
-    //return true if changed / false if can not be changed
-    private boolean flipValue(boolean table){
-        if (checkIfAtLeastTwoTablesAreEnable()){
-            if (table==true){
-                table=false;
-                Log.d("TAG", one+" one?");
-            }
-            else
-                table=true;
-            return true;
-        }
-        else
-            return false;
-    }
-
-    //returns true if we can disable table
-    private boolean checkIfAtLeastTwoTablesAreEnable(){
+//******************** Checks if at least MIN_NUM_OF_TABLES is selected ****************************
+    private boolean checkIfMinNumberOfTablesIsSelected(){
         int counter = 0;
         if (one)
             counter++;
@@ -106,15 +116,13 @@ class Controller {
             counter++;
         if (nine)
             counter++;
-//TODO: allow to do single table (need to change layout to max 18 cards!!!)
-        if (counter>2)
+        if (counter>MIN_NUM_OF_TABLES)
             return true;
         else
             return false;
     }
 
-    //checks if number passed in is within the table that is selected
-    //returns true if number is within rane / false if its not
+//******************** Checks if number passed in is enabled (selected) ****************************
     public boolean checkNumber(int number){
         Log.d("TAG", "numberChecking "+number);
         boolean toReturn = false;
@@ -145,7 +153,7 @@ class Controller {
         if (number == 9)
             if (nine)
                 toReturn = true;
-        Log.d("TAG", "returning "+toReturn);
+
         return toReturn;
     }
 }

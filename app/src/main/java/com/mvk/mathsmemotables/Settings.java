@@ -13,31 +13,62 @@ public class Settings extends AppCompatActivity {
 
     //ui
     @BindView(R.id.oneBox) CheckBox oneBox;
+    @BindView(R.id.twoBox) CheckBox twoBox;
+    @BindView(R.id.threeBox) CheckBox threeBox;
+    @BindView(R.id.fourBox) CheckBox fourBox;
+    @BindView(R.id.fiveBox) CheckBox fiveBox;
+    @BindView(R.id.sixBox) CheckBox sixBox;
+    @BindView(R.id.sevenBox) CheckBox sevenBox;
+    @BindView(R.id.eightBox) CheckBox eightBox;
+    @BindView(R.id.nineBox) CheckBox nineBox;
 
+//*************************************** OnCreate *************************************************
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
         ButterKnife.bind(this);
-        //oneBox.setChecked(true);
+        if(Controller.getInstance().checkNumber(1))
+            oneBox.setChecked(true);
+        if(Controller.getInstance().checkNumber(2))
+            twoBox.setChecked(true);
+        if(Controller.getInstance().checkNumber(3))
+            threeBox.setChecked(true);
+        if(Controller.getInstance().checkNumber(4))
+            fourBox.setChecked(true);
+        if(Controller.getInstance().checkNumber(5))
+            fiveBox.setChecked(true);
+        if(Controller.getInstance().checkNumber(6))
+            sixBox.setChecked(true);
+        if(Controller.getInstance().checkNumber(7))
+            sevenBox.setChecked(true);
+        if(Controller.getInstance().checkNumber(8))
+            eightBox.setChecked(true);
+        if(Controller.getInstance().checkNumber(9))
+            nineBox.setChecked(true);
+
     }
 
-    //TODO: fix it! doesnt change the value of enableDisable
+//*************************** Tables Selection OnClick *********************************************
+    //TODO: If at least two values are selected
     @OnClick({R.id.oneBox, R.id.twoBox, R.id.threeBox, R.id.fourBox, R.id.fiveBox,
             R.id.sixBox, R.id.sevenBox, R.id.eightBox, R.id.nineBox})
     public void changeOne(CheckBox checkBox){
         if (checkBox.isChecked()){
             checkBox.setChecked(true);
         }
+        //TODO: validation tobe added here
         else{
             checkBox.setChecked(false);
         }
         boolean changed;
         Log.d("TAG", getStringFromCheckBox(checkBox)+"");
-        changed = Controller.getInstance().enableDisableTable(getStringFromCheckBox(checkBox));
+        Controller.getInstance().enableDisableTable(getStringFromCheckBox(checkBox));
+
     }
 
+//********************* Returns String format number from checkbox *********************************
     private String getStringFromCheckBox(CheckBox checkBox){
         if (checkBox == (CheckBox)findViewById(R.id.oneBox))
             return "one";
