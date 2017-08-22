@@ -1,13 +1,17 @@
 package com.mvk.mathsmemotables;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.CheckBox;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnTouch;
 
 public class Settings extends AppCompatActivity {
 
@@ -21,6 +25,9 @@ public class Settings extends AppCompatActivity {
     @BindView(R.id.sevenBox) CheckBox sevenBox;
     @BindView(R.id.eightBox) CheckBox eightBox;
     @BindView(R.id.nineBox) CheckBox nineBox;
+    @BindView(R.id.difficulty) SeekBar difficulty;
+    @BindView(R.id.difficultyIndicator) TextView difficultyIndicator;
+
 
 //*************************************** OnCreate *************************************************
     @Override
@@ -48,10 +55,29 @@ public class Settings extends AppCompatActivity {
         if(Controller.getInstance().checkNumber(9))
             nineBox.setChecked(true);
 
+        //sets the difficulty level
+        loadDiffuclty();
+
+    //-------------------------- Difficulty Update -------------------------------------------------
+        difficulty.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                //updates label
+                updateDifficultyLabel(i);
+                //updates value stored in controller
+                Controller.getInstance().setGameDifficulty(i);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
     }
 
 //*************************** Tables Selection OnClick *********************************************
-    //TODO: If at least two values are selected
+    //TODO: If at least two values are cardSelected
     @OnClick({R.id.oneBox, R.id.twoBox, R.id.threeBox, R.id.fourBox, R.id.fiveBox,
             R.id.sixBox, R.id.sevenBox, R.id.eightBox, R.id.nineBox})
     public void changeOne(CheckBox checkBox){
@@ -89,5 +115,19 @@ public class Settings extends AppCompatActivity {
         else
             return "nine";
     }
+//******************* Updates the difficulty seekbar and textview **********************************
+    private void loadDiffuclty(){
+        int difficulty = Controller.getInstance().getGameDifficulty();
+        this.difficulty.setProgress(difficulty);
+        updateDifficultyLabel(difficulty);
+    }
 
+    //updates the difficulty TextView
+    private void updateDifficultyLabel(int difficulty){
+        if (difficulty==0)
+            difficultyIndicator.setText("Easy");
+        else if (difficulty==1)
+            difficultyIndicator.setText("Medium");
+        else difficultyIndicator.setText("Hard");
+    }
 }

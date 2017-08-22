@@ -6,11 +6,15 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by marcin on 26/07/2017.
@@ -18,57 +22,52 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class BaseOfGame extends Activity {
 
+    //UI
+    @BindView(R.id.result1) TextView result1;
+    @BindView(R.id.result2) TextView result2;
+    @BindView(R.id.result3) TextView result3;
+
     //cards
-    int[] backButtons  = new int[28];
-    int[] textButtons = new int[28];
+    protected int[] backButtons;
+    protected int[] textButtons;
 
     //equations and results arrays
-    int [] firstElements = new int[14];
-    int [] secondElements = new int[14];
-    int [] result = new int[14];
+    private int [] firstElements;
+    private int [] secondElements;
+    private int [] result;
 
     //position of elements array, used to randomly allocate elements
-    int [] positions = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27};
+    protected int [] positions;
 
     //tracks flipped over cards
-    boolean[] selected;
+    protected boolean[] selected;
 
 //*************************************** OnCreate *************************************************
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //set up arrays based on difficulty level selected
+        backButtons = new int[Controller.getInstance().getNumberOfCards()];
+        textButtons = new int[Controller.getInstance().getNumberOfCards()];
+        firstElements = new int[Controller.getInstance().getNumberOfCards()/2];
+        secondElements = new int[Controller.getInstance().getNumberOfCards()/2];
+        result = new int[Controller.getInstance().getNumberOfCards()/2];
+        positions = new int[Controller.getInstance().getNumberOfCards()];
+
+
         backButtons[0] = R.id.q1back;        backButtons[1] = R.id.q2back;
         backButtons[2] = R.id.q3back;        backButtons[3] = R.id.q4back;
         backButtons[4] = R.id.q5back;        backButtons[5] = R.id.q6back;
         backButtons[6] = R.id.q7back;        backButtons[7] = R.id.q8back;
         backButtons[8] = R.id.q9back;        backButtons[9] = R.id.q10back;
-        backButtons[10] = R.id.q11back;        backButtons[11] = R.id.q12back;
-        backButtons[12] = R.id.q13back;        backButtons[13] = R.id.q14back;
-        backButtons[14] = R.id.q15back;        backButtons[15] = R.id.q16back;
-        backButtons[16] = R.id.q17back;        backButtons[17] = R.id.q18back;
-        backButtons[18] = R.id.q19back;        backButtons[19] = R.id.q20back;
-        backButtons[20] = R.id.q21back;        backButtons[21] = R.id.q22back;
-        backButtons[22] = R.id.q23back;        backButtons[23] = R.id.q24back;
-        backButtons[24] = R.id.q25back;        backButtons[25] = R.id.q26back;
-        backButtons[26] = R.id.q27back;        backButtons[27] = R.id.q28back;
 
         textButtons[0] = R.id.q1text;        textButtons[1] = R.id.q2text;
         textButtons[2] = R.id.q3text;        textButtons[3] = R.id.q4text;
         textButtons[4] = R.id.q5text;        textButtons[5] = R.id.q6text;
         textButtons[6] = R.id.q7text;        textButtons[7] = R.id.q8text;
         textButtons[8] = R.id.q9text;        textButtons[9] = R.id.q10text;
-        textButtons[10] = R.id.q11text;        textButtons[11] = R.id.q12text;
-        textButtons[12] = R.id.q13text;        textButtons[13] = R.id.q14text;
-        textButtons[14] = R.id.q15text;        textButtons[15] = R.id.q16text;
-        textButtons[16] = R.id.q17text;        textButtons[17] = R.id.q18text;
-        textButtons[18] = R.id.q19text;        textButtons[19] = R.id.q20text;
-        textButtons[20] = R.id.q21text;        textButtons[21] = R.id.q22text;
-        textButtons[22] = R.id.q23text;        textButtons[23] = R.id.q24text;
-        textButtons[24] = R.id.q25text;        textButtons[25] = R.id.q26text;
-        textButtons[26] = R.id.q27text;        textButtons[27] = R.id.q28text;
 
-        shuffleArray(positions);
     }
 
 //*************************** Shuffling method for position array **********************************
@@ -78,7 +77,7 @@ public class BaseOfGame extends Activity {
     {
         // If running on Java 6 or older, use `new Random()` on RHS here
         Random rnd = ThreadLocalRandom.current();
-        for (int i = ar.length - 1; i > 0; i--)
+        for (int i = Controller.getInstance().getNumberOfCards() - 1; i > 0; i--)
         {
             int index = rnd.nextInt(i + 1);
             // Simple swap
@@ -88,6 +87,56 @@ public class BaseOfGame extends Activity {
         }
     }
 
+//********************************** Card flipping logic *******************************************
+    public void cardSelected(ImageView button) {
+        //---------------------------------- if element is hidden ----------------------------------
+        if (button.getAlpha() == 0.0f) {
+            //
+        }
+        //---------------------------- if two element is already cardSelected ----------------------
+        else if (positionOfAlreadySelectedElement(selected) == -2) {
+            //deselect all (and update tracking array (cardSelected))
+            deselectAll();
+            //select new element
+            flipImage(button, getButtonNumber(button) - 1);
+        }
+        //---------------------------- if one element is already cardSelected ----------------------
+        else if (positionOfAlreadySelectedElement(selected) != -1) {
+            //if user press again on the same button - deselect it
+            if (positionOfAlreadySelectedElement(selected) == getButtonNumber(button)) {
+                flipImage(button, getButtonNumber(button) - 1);
+            }
+            //TODO: finish the method
+            //compare two values
+            // positionOfAlreadySelectedElement(cardSelected) - position of item 1
+            // getButtonNumber(button)                    - position of item 2
+            else {
+                //TODO: change string comparison to maths compare
+                //select second one
+                flipImage(button, getButtonNumber(button) - 1);
+
+                if (getValue(getTextAtPosition(getButtonNumber(button)).getText().toString()) ==
+                        getValue(getTextAtPosition(positionOfAlreadySelectedElement(selected)).getText().toString())) {
+
+                    //hides buttons with the same text
+                    button.setAlpha(0.0f);
+                    getButtonAtPosition(positionOfAlreadySelectedElement(selected)).setAlpha(0.0f);
+
+                    //hides text on the buttons
+                    getTextAtPosition(getButtonNumber(button)).setVisibility(View.INVISIBLE);
+                    getTextAtPosition(positionOfAlreadySelectedElement(selected)).setVisibility(View.INVISIBLE);
+
+                    result1.setText(getTextAtPosition(getButtonNumber(button)).getText());
+                    result2.setText("=");
+                    result3.setText(getTextAtPosition(positionOfAlreadySelectedElement(selected)).getText());
+                }
+            }
+        }
+        //------------------------------ if no elements have been cardSelected ---------------------
+        else {
+            flipImage(button, getButtonNumber(button) - 1);
+        }
+    }
 //*************************** Returns (background) ImageView at position ***************************
     public ImageView getButtonAtPosition(int position){
         ImageView imageView = (ImageView)findViewById(backButtons[position-1]);
@@ -112,7 +161,7 @@ public class BaseOfGame extends Activity {
         return imageNumber;
     }
 
-//********************* Get previously selected element position ***********************************
+//********************* Get previously cardSelected element position *******************************
     public int positionOfAlreadySelectedElement(boolean[] array){
         int toReturn = -1;
         int count = 0;
@@ -122,7 +171,7 @@ public class BaseOfGame extends Activity {
                 count++;
             }
         }
-        //if there was more than one number selected return -2
+        //if there was more than one number cardSelected return -2
         if (count>1)
             toReturn=-2;
         return toReturn;
@@ -137,7 +186,7 @@ public class BaseOfGame extends Activity {
 
             do {
                 //Loop checks it the first number its within the range of tables
-                //selected in settings
+                //cardSelected in settings
                 do {
                     randomNum1 = ThreadLocalRandom.current().nextInt(1, 9 + 1);
                 }while (!Controller.getInstance().checkNumber(randomNum1));
@@ -174,15 +223,15 @@ public class BaseOfGame extends Activity {
         generateEquations();
 
         //allocate all equations
-        for (int i=0; i < 14; i++){
+        for (int i=0; i < Controller.getInstance().getNumberOfCards()/2; i++){
             TextView textView = (TextView)findViewById(textButtons[positions[i]]);
             textView.setText(firstElements[i]+" x "+secondElements[i]);
         }
 
         //allocate results
-        for (int i=14; i < 28; i++){
+        for (int i=Controller.getInstance().getNumberOfCards()/2; i < Controller.getInstance().getNumberOfCards(); i++){
             TextView textView = (TextView)findViewById(textButtons[positions[i]]);
-            textView.setText(result[i-14]+"");
+            textView.setText(result[i-Controller.getInstance().getNumberOfCards()/2]+"");
         }
     }
 

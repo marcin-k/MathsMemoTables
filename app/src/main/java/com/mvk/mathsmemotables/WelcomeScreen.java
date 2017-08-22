@@ -4,19 +4,12 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
-import android.provider.ContactsContract;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.OnTouch;
 
 public class WelcomeScreen extends Activity {
@@ -27,7 +20,7 @@ public class WelcomeScreen extends Activity {
     @BindView(R.id.soundButton) ImageView soundButton;
 
     //sound on/off
-    boolean letsMusicPlay;
+    protected boolean letsMusicPlay;
 
 
 //*************************************** OnCreate *************************************************
@@ -47,14 +40,14 @@ public class WelcomeScreen extends Activity {
 
     }
 
-//**************************** Navigation Buttons OnClick*******************************************
+//**************************** Navigation Buttons OnClick ******************************************
     @OnTouch(R.id.playButton)
     public boolean touchPlay(MotionEvent event) {
         if(event.getAction() == MotionEvent.ACTION_DOWN) {
             animateButtonTouched(playButton);
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             animateButtonReleased(playButton);
-            Intent intent = new Intent(this, GamePlay0.class);
+            Intent intent = new Intent(this, Controller.getInstance().getGameplayClass());
             startActivity(intent);
         }
         return true;

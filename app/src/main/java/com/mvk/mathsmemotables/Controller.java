@@ -1,5 +1,6 @@
 package com.mvk.mathsmemotables;
 
+import android.content.Intent;
 import android.util.Log;
 
 /**
@@ -8,7 +9,7 @@ import android.util.Log;
 
 class Controller {
 
-    //Minimal number of tables that needs to be selected
+    //Minimal number of tables that needs to be cardSelected
     private final int MIN_NUM_OF_TABLES = 2;
 
     //booleans to change tables
@@ -22,6 +23,15 @@ class Controller {
     private boolean eight;
     private boolean nine;
 
+    /*
+     * gameDifficulty is a deciding factor when loading the game activity,
+     * (number of cards on the screen - 28-hard, 18-medium, 10-easy)
+     *  0 - easy - loads GamePlaySmall
+     *  1 - medium - loads GamePlayMid
+     *  2 - hard - loads GamePlayLarge
+     */
+    private int gameDifficulty;
+
     private static final Controller ourInstance = new Controller();
     static Controller getInstance() {
         return ourInstance;
@@ -31,9 +41,11 @@ class Controller {
     private Controller() {
         //sets to default value of true
         one = two = three = four = five = six = seven = eight = nine = true;
+        //sets default game difficulty to medium
+        gameDifficulty=1;
     }
 
-//************************* Disables or enables selected table *************************************
+//************************* Disables or enables cardSelected table *********************************
     //flips the value for boolean table
     public void enableDisableTable(String number){
         boolean toReturn;
@@ -95,7 +107,7 @@ class Controller {
         }
     }
 
-//******************** Checks if at least MIN_NUM_OF_TABLES is selected ****************************
+//******************** Checks if at least MIN_NUM_OF_TABLES is cardSelected ************************
     private boolean checkIfMinNumberOfTablesIsSelected(){
         int counter = 0;
         if (one)
@@ -122,7 +134,7 @@ class Controller {
             return false;
     }
 
-//******************** Checks if number passed in is enabled (selected) ****************************
+//******************** Checks if number passed in is enabled (cardSelected) ************************
     public boolean checkNumber(int number){
         Log.d("TAG", "numberChecking "+number);
         boolean toReturn = false;
@@ -155,5 +167,35 @@ class Controller {
                 toReturn = true;
 
         return toReturn;
+    }
+
+//*********************** Returns number of cards used in the game *********************************
+    public int getNumberOfCards(){
+        if (gameDifficulty==0)
+            return 10;
+        else if(gameDifficulty==1)
+            return 18;
+        else
+            return 28;
+    }
+
+
+//******************* Returns intend based on the difficulty level *********************************
+    public Class getGameplayClass(){
+        if (gameDifficulty==0)
+            return GamePlaySmall.class;
+        else if(gameDifficulty==1)
+            return GamePlayMid.class;
+        else
+            return GamePlayLarge.class;
+    }
+
+//******************************* Getter and Setters ***********************************************
+    public int getGameDifficulty() {
+        return gameDifficulty;
+    }
+
+    public void setGameDifficulty(int gameDifficulty) {
+        this.gameDifficulty = gameDifficulty;
     }
 }

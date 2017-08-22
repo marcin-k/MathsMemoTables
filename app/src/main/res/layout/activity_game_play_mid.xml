@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mvk.mathsmemotables.GamePlay0"
+    tools:context="com.mvk.mathsmemotables.GamePlayMid"
     android:background="@drawable/bg_gameplay">
 
     <!-- **************************** First Row **************************** -->
     <ImageView
         android:id="@+id/q1back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
+        android:layout_width="88dp"
+        android:layout_height="60dp"
         android:src="@drawable/button"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
@@ -21,14 +21,15 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
-        app:layout_constraintVertical_bias="0.091" />
+        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintVertical_bias="0.06" />
 
     <TextView
         android:id="@+id/q1text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textview"
+        tools:text="TextView"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
@@ -43,8 +44,8 @@
 
     <ImageView
         android:id="@+id/q2back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
+        android:layout_width="88dp"
+        android:layout_height="60dp"
         android:src="@drawable/button"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
@@ -54,8 +55,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.388"
-        app:layout_constraintVertical_bias="0.091" />
+        app:layout_constraintVertical_bias="0.063" />
 
     <TextView
         android:id="@+id/q2text"
@@ -76,8 +76,8 @@
 
     <ImageView
         android:id="@+id/q3back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
+        android:layout_width="88dp"
+        android:layout_height="60dp"
         android:src="@drawable/button"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
@@ -87,8 +87,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.66"
-        app:layout_constraintVertical_bias="0.091" />
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintVertical_bias="0.058" />
 
     <TextView
         android:id="@+id/q3text"
@@ -107,10 +107,12 @@
         app:layout_constraintRight_toRightOf="@+id/q3back"
         />
 
+
+    <!-- **************************** Second Row **************************** -->
     <ImageView
         android:id="@+id/q4back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
+        android:layout_width="88dp"
+        android:layout_height="60dp"
         android:src="@drawable/button"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
@@ -120,8 +122,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.909"
-        app:layout_constraintVertical_bias="0.091" />
+        app:layout_constraintHorizontal_bias="0.091"
+        app:layout_constraintVertical_bias="0.184" />
 
     <TextView
         android:id="@+id/q4text"
@@ -132,18 +134,18 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.652"
+        app:layout_constraintVertical_bias="0.333"
         app:layout_constraintTop_toTopOf="@+id/q4back"
         app:layout_constraintBottom_toBottomOf="@+id/q4back"
         app:layout_constraintLeft_toLeftOf="@+id/q4back"
         app:layout_constraintRight_toRightOf="@+id/q4back"
         />
-    <!-- **************************** Second Row **************************** -->
+
     <ImageView
         android:id="@+id/q5back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
+        android:layout_width="88dp"
+        android:layout_height="60dp"
         android:src="@drawable/button"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
@@ -153,8 +155,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
-        app:layout_constraintVertical_bias="0.189" />
+        app:layout_constraintVertical_bias="0.183" />
 
     <TextView
         android:id="@+id/q5text"
@@ -165,18 +166,17 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.652"
+        app:layout_constraintVertical_bias="0.37"
         app:layout_constraintTop_toTopOf="@+id/q5back"
         app:layout_constraintBottom_toBottomOf="@+id/q5back"
         app:layout_constraintLeft_toLeftOf="@+id/q5back"
-        app:layout_constraintRight_toRightOf="@+id/q5back"
-        />
+        app:layout_constraintRight_toRightOf="@+id/q5back" />
 
     <ImageView
         android:id="@+id/q6back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
+        android:layout_width="88dp"
+        android:layout_height="60dp"
         android:src="@drawable/button"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
@@ -186,8 +186,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.388"
-        app:layout_constraintVertical_bias="0.189" />
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintVertical_bias="0.183" />
 
     <TextView
         android:id="@+id/q6text"
@@ -198,17 +198,20 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.608"
+        app:layout_constraintVertical_bias="0.37"
         app:layout_constraintTop_toTopOf="@+id/q6back"
         app:layout_constraintBottom_toBottomOf="@+id/q6back"
         app:layout_constraintLeft_toLeftOf="@+id/q6back"
-        app:layout_constraintRight_toRightOf="@+id/q6back" />
+        app:layout_constraintRight_toRightOf="@+id/q6back"
+        />
 
+
+    <!-- **************************** Third Row **************************** -->
     <ImageView
         android:id="@+id/q7back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
+        android:layout_width="88dp"
+        android:layout_height="60dp"
         android:src="@drawable/button"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
@@ -218,8 +221,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.66"
-        app:layout_constraintVertical_bias="0.189" />
+        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintVertical_bias="0.31" />
 
     <TextView
         android:id="@+id/q7text"
@@ -230,8 +233,8 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintVertical_bias="0.37"
         app:layout_constraintTop_toTopOf="@+id/q7back"
         app:layout_constraintBottom_toBottomOf="@+id/q7back"
         app:layout_constraintLeft_toLeftOf="@+id/q7back"
@@ -240,8 +243,8 @@
 
     <ImageView
         android:id="@+id/q8back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
+        android:layout_width="88dp"
+        android:layout_height="60dp"
         android:src="@drawable/button"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
@@ -251,8 +254,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.909"
-        app:layout_constraintVertical_bias="0.189" />
+        app:layout_constraintVertical_bias="0.307" />
 
     <TextView
         android:id="@+id/q8text"
@@ -263,18 +265,18 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.714"
-        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.681"
+        app:layout_constraintVertical_bias="0.37"
         app:layout_constraintTop_toTopOf="@+id/q8back"
         app:layout_constraintBottom_toBottomOf="@+id/q8back"
         app:layout_constraintLeft_toLeftOf="@+id/q8back"
         app:layout_constraintRight_toRightOf="@+id/q8back"
         />
-    <!-- **************************** Third Row **************************** -->
+
     <ImageView
         android:id="@+id/q9back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
+        android:layout_width="88dp"
+        android:layout_height="60dp"
         android:src="@drawable/button"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
@@ -284,8 +286,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
-        app:layout_constraintVertical_bias="0.294" />
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintVertical_bias="0.307" />
 
     <TextView
         android:id="@+id/q9text"
@@ -296,18 +298,20 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintVertical_bias="0.37"
         app:layout_constraintTop_toTopOf="@+id/q9back"
         app:layout_constraintBottom_toBottomOf="@+id/q9back"
         app:layout_constraintLeft_toLeftOf="@+id/q9back"
         app:layout_constraintRight_toRightOf="@+id/q9back"
         />
 
+
+    <!-- **************************** Fourth Row **************************** -->
     <ImageView
         android:id="@+id/q10back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
+        android:layout_width="88dp"
+        android:layout_height="60dp"
         android:src="@drawable/button"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
@@ -317,8 +321,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.388"
-        app:layout_constraintVertical_bias="0.294" />
+        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintVertical_bias="0.436" />
 
     <TextView
         android:id="@+id/q10text"
@@ -329,8 +333,8 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.785"
-        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintVertical_bias="0.37"
         app:layout_constraintTop_toTopOf="@+id/q10back"
         app:layout_constraintBottom_toBottomOf="@+id/q10back"
         app:layout_constraintLeft_toLeftOf="@+id/q10back"
@@ -339,8 +343,8 @@
 
     <ImageView
         android:id="@+id/q11back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
+        android:layout_width="88dp"
+        android:layout_height="60dp"
         android:src="@drawable/button"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
@@ -350,8 +354,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.66"
-        app:layout_constraintVertical_bias="0.294" />
+        app:layout_constraintVertical_bias="0.436" />
 
     <TextView
         android:id="@+id/q11text"
@@ -362,8 +365,8 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.681"
+        app:layout_constraintVertical_bias="0.37"
         app:layout_constraintTop_toTopOf="@+id/q11back"
         app:layout_constraintBottom_toBottomOf="@+id/q11back"
         app:layout_constraintLeft_toLeftOf="@+id/q11back"
@@ -372,8 +375,8 @@
 
     <ImageView
         android:id="@+id/q12back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
+        android:layout_width="88dp"
+        android:layout_height="60dp"
         android:src="@drawable/button"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
@@ -383,8 +386,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.909"
-        app:layout_constraintVertical_bias="0.294" />
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintVertical_bias="0.435" />
 
     <TextView
         android:id="@+id/q12text"
@@ -395,18 +398,20 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.714"
-        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintVertical_bias="0.37"
         app:layout_constraintTop_toTopOf="@+id/q12back"
         app:layout_constraintBottom_toBottomOf="@+id/q12back"
         app:layout_constraintLeft_toLeftOf="@+id/q12back"
         app:layout_constraintRight_toRightOf="@+id/q12back"
         />
-    <!-- **************************** Fourth Row **************************** -->
+
+
+    <!-- **************************** Fifth Row **************************** -->
     <ImageView
         android:id="@+id/q13back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
+        android:layout_width="88dp"
+        android:layout_height="60dp"
         android:src="@drawable/button"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
@@ -416,8 +421,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
-        app:layout_constraintVertical_bias="0.403" />
+        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintVertical_bias="0.56" />
 
     <TextView
         android:id="@+id/q13text"
@@ -428,8 +433,8 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintVertical_bias="0.296"
         app:layout_constraintTop_toTopOf="@+id/q13back"
         app:layout_constraintBottom_toBottomOf="@+id/q13back"
         app:layout_constraintLeft_toLeftOf="@+id/q13back"
@@ -438,8 +443,8 @@
 
     <ImageView
         android:id="@+id/q14back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
+        android:layout_width="88dp"
+        android:layout_height="60dp"
         android:src="@drawable/button"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
@@ -449,8 +454,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.388"
-        app:layout_constraintVertical_bias="0.403" />
+        app:layout_constraintVertical_bias="0.557" />
 
     <TextView
         android:id="@+id/q14text"
@@ -461,8 +465,8 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.681"
+        app:layout_constraintVertical_bias="0.259"
         app:layout_constraintTop_toTopOf="@+id/q14back"
         app:layout_constraintBottom_toBottomOf="@+id/q14back"
         app:layout_constraintLeft_toLeftOf="@+id/q14back"
@@ -471,8 +475,8 @@
 
     <ImageView
         android:id="@+id/q15back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
+        android:layout_width="88dp"
+        android:layout_height="60dp"
         android:src="@drawable/button"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
@@ -482,8 +486,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.66"
-        app:layout_constraintVertical_bias="0.403" />
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintVertical_bias="0.557" />
 
     <TextView
         android:id="@+id/q15text"
@@ -494,18 +498,20 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintVertical_bias="0.333"
         app:layout_constraintTop_toTopOf="@+id/q15back"
         app:layout_constraintBottom_toBottomOf="@+id/q15back"
         app:layout_constraintLeft_toLeftOf="@+id/q15back"
         app:layout_constraintRight_toRightOf="@+id/q15back"
         />
 
+
+    <!-- **************************** Sixth Row **************************** -->
     <ImageView
         android:id="@+id/q16back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
+        android:layout_width="88dp"
+        android:layout_height="60dp"
         android:src="@drawable/button"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
@@ -515,8 +521,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.909"
-        app:layout_constraintVertical_bias="0.403" />
+        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintVertical_bias="0.687" />
 
     <TextView
         android:id="@+id/q16text"
@@ -527,18 +533,18 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintVertical_bias="0.37"
         app:layout_constraintTop_toTopOf="@+id/q16back"
         app:layout_constraintBottom_toBottomOf="@+id/q16back"
         app:layout_constraintLeft_toLeftOf="@+id/q16back"
         app:layout_constraintRight_toRightOf="@+id/q16back"
         />
-    <!-- **************************** Fifth Row **************************** -->
+
     <ImageView
         android:id="@+id/q17back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
+        android:layout_width="88dp"
+        android:layout_height="60dp"
         android:src="@drawable/button"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
@@ -548,8 +554,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
-        app:layout_constraintVertical_bias="0.498" />
+        app:layout_constraintVertical_bias="0.689" />
 
     <TextView
         android:id="@+id/q17text"
@@ -560,8 +565,8 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.681"
+        app:layout_constraintVertical_bias="0.333"
         app:layout_constraintTop_toTopOf="@+id/q17back"
         app:layout_constraintBottom_toBottomOf="@+id/q17back"
         app:layout_constraintLeft_toLeftOf="@+id/q17back"
@@ -570,8 +575,8 @@
 
     <ImageView
         android:id="@+id/q18back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
+        android:layout_width="88dp"
+        android:layout_height="60dp"
         android:src="@drawable/button"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
@@ -581,8 +586,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.388"
-        app:layout_constraintVertical_bias="0.498" />
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintVertical_bias="0.689" />
 
     <TextView
         android:id="@+id/q18text"
@@ -593,344 +598,15 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintVertical_bias="0.333"
         app:layout_constraintTop_toTopOf="@+id/q18back"
         app:layout_constraintBottom_toBottomOf="@+id/q18back"
         app:layout_constraintLeft_toLeftOf="@+id/q18back"
         app:layout_constraintRight_toRightOf="@+id/q18back"
         />
 
-    <ImageView
-        android:id="@+id/q19back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
-        android:src="@drawable/button"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.66"
-        app:layout_constraintVertical_bias="0.498" />
-
-    <TextView
-        android:id="@+id/q19text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
-        app:layout_constraintTop_toTopOf="@+id/q19back"
-        app:layout_constraintBottom_toBottomOf="@+id/q19back"
-        app:layout_constraintLeft_toLeftOf="@+id/q19back"
-        app:layout_constraintRight_toRightOf="@+id/q19back"
-        />
-
-    <ImageView
-        android:id="@+id/q20back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
-        android:src="@drawable/button"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.909"
-        app:layout_constraintVertical_bias="0.498" />
-
-    <TextView
-        android:id="@+id/q20text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
-        app:layout_constraintTop_toTopOf="@+id/q20back"
-        app:layout_constraintBottom_toBottomOf="@+id/q20back"
-        app:layout_constraintLeft_toLeftOf="@+id/q20back"
-        app:layout_constraintRight_toRightOf="@+id/q20back"
-        />
-    <!-- **************************** Sixth Row **************************** -->
-    <ImageView
-        android:id="@+id/q21back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
-        android:src="@drawable/button"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
-        app:layout_constraintVertical_bias="0.592" />
-
-    <TextView
-        android:id="@+id/q21text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
-        app:layout_constraintTop_toTopOf="@+id/q21back"
-        app:layout_constraintBottom_toBottomOf="@+id/q21back"
-        app:layout_constraintLeft_toLeftOf="@+id/q21back"
-        app:layout_constraintRight_toRightOf="@+id/q21back"
-        />
-
-    <ImageView
-        android:id="@+id/q22back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
-        android:src="@drawable/button"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.388"
-        app:layout_constraintVertical_bias="0.592" />
-
-    <TextView
-        android:id="@+id/q22text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
-        app:layout_constraintTop_toTopOf="@+id/q22back"
-        app:layout_constraintBottom_toBottomOf="@+id/q22back"
-        app:layout_constraintLeft_toLeftOf="@+id/q22back"
-        app:layout_constraintRight_toRightOf="@+id/q22back"
-        />
-
-    <ImageView
-        android:id="@+id/q23back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
-        android:src="@drawable/button"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.66"
-        app:layout_constraintVertical_bias="0.592" />
-
-    <TextView
-        android:id="@+id/q23text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
-        app:layout_constraintTop_toTopOf="@+id/q23back"
-        app:layout_constraintBottom_toBottomOf="@+id/q23back"
-        app:layout_constraintLeft_toLeftOf="@+id/q23back"
-        app:layout_constraintRight_toRightOf="@+id/q23back"
-        />
-
-    <ImageView
-        android:id="@+id/q24back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
-        android:src="@drawable/button"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.909"
-        app:layout_constraintVertical_bias="0.592" />
-
-    <TextView
-        android:id="@+id/q24text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
-        app:layout_constraintTop_toTopOf="@+id/q24back"
-        app:layout_constraintBottom_toBottomOf="@+id/q24back"
-        app:layout_constraintLeft_toLeftOf="@+id/q24back"
-        app:layout_constraintRight_toRightOf="@+id/q24back"
-        />
-    <!-- **************************** Seventh Row **************************** -->
-    <ImageView
-        android:id="@+id/q25back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
-        android:src="@drawable/button"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
-        app:layout_constraintVertical_bias="0.692" />
-
-    <TextView
-        android:id="@+id/q25text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
-        app:layout_constraintTop_toTopOf="@+id/q25back"
-        app:layout_constraintBottom_toBottomOf="@+id/q25back"
-        app:layout_constraintLeft_toLeftOf="@+id/q25back"
-        app:layout_constraintRight_toRightOf="@+id/q25back"
-        />
-
-    <ImageView
-        android:id="@+id/q26back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
-        android:src="@drawable/button"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.388"
-        app:layout_constraintVertical_bias="0.692" />
-
-    <TextView
-        android:id="@+id/q26text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
-        app:layout_constraintTop_toTopOf="@+id/q26back"
-        app:layout_constraintBottom_toBottomOf="@+id/q26back"
-        app:layout_constraintLeft_toLeftOf="@+id/q26back"
-        app:layout_constraintRight_toRightOf="@+id/q26back"
-        />
-
-    <ImageView
-        android:id="@+id/q27back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
-        android:src="@drawable/button"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.66"
-        app:layout_constraintVertical_bias="0.692" />
-
-    <TextView
-        android:id="@+id/q27text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
-        app:layout_constraintTop_toTopOf="@+id/q27back"
-        app:layout_constraintBottom_toBottomOf="@+id/q27back"
-        app:layout_constraintLeft_toLeftOf="@+id/q27back"
-        app:layout_constraintRight_toRightOf="@+id/q27back"
-        />
-
-    <ImageView
-        android:id="@+id/q28back"
-        android:layout_width="59dp"
-        android:layout_height="36dp"
-        android:src="@drawable/button"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.909"
-        app:layout_constraintVertical_bias="0.692" />
-
-    <TextView
-        android:id="@+id/q28text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
-        app:layout_constraintTop_toTopOf="@+id/q28back"
-        app:layout_constraintBottom_toBottomOf="@+id/q28back"
-        app:layout_constraintLeft_toLeftOf="@+id/q28back"
-        app:layout_constraintRight_toRightOf="@+id/q28back"
-        />
-
+    <!-- **************************** Extra UI Elements **************************** -->
     <TextView
         android:id="@+id/result1"
         android:layout_width="wrap_content"
@@ -984,7 +660,6 @@
         app:layout_constraintVertical_bias="0.765"
         tools:text="16" />
 
-    <!-- **************************** Extra UI Elements **************************** -->
     <ImageView
         android:id="@+id/clappingMonkey"
         android:layout_width="111dp"
@@ -1002,20 +677,20 @@
         app:layout_constraintVertical_bias="0.808" />
     <!---->
     <!--<ImageView-->
-        <!--android:id="@+id/slappingMonkey"-->
-        <!--android:layout_width="94dp"-->
-        <!--android:layout_height="93dp"-->
-        <!--android:scaleType="centerInside"-->
-        <!--app:srcCompat="@drawable/monkey"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--app:layout_constraintVertical_bias="0.809"-->
-        <!--android:layout_marginLeft="8dp"-->
-        <!--app:layout_constraintLeft_toLeftOf="parent"-->
-        <!--android:layout_marginRight="8dp"-->
-        <!--app:layout_constraintRight_toRightOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.186" />-->
+    <!--android:id="@+id/slappingMonkey"-->
+    <!--android:layout_width="94dp"-->
+    <!--android:layout_height="93dp"-->
+    <!--android:scaleType="centerInside"-->
+    <!--app:srcCompat="@drawable/monkey"-->
+    <!--app:layout_constraintTop_toTopOf="parent"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--android:layout_marginBottom="8dp"-->
+    <!--app:layout_constraintVertical_bias="0.809"-->
+    <!--android:layout_marginLeft="8dp"-->
+    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--android:layout_marginRight="8dp"-->
+    <!--app:layout_constraintRight_toRightOf="parent"-->
+    <!--app:layout_constraintHorizontal_bias="0.186" />-->
 
 </android.support.constraint.ConstraintLayout>

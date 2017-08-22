@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mvk.mathsmemotables.GamePlaySmall"
+    android:background="@drawable/bg_gameplay">
+
+    <!-- **************************** First Row **************************** -->
+    <ImageView
+        android:id="@+id/q1back"
+        android:layout_width="123dp"
+        android:layout_height="63dp"
+        android:src="@drawable/button"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintVertical_bias="0.06"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/q1text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textview"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.642"
+        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintTop_toTopOf="@+id/q1back"
+        app:layout_constraintBottom_toBottomOf="@+id/q1back"
+        app:layout_constraintLeft_toLeftOf="@+id/q1back"
+        app:layout_constraintRight_toRightOf="@+id/q1back"
+        />
+
+    <ImageView
+        android:id="@+id/q2back"
+        android:layout_width="123dp"
+        android:layout_height="63dp"
+        android:src="@drawable/button"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintVertical_bias="0.06" />
+
+    <TextView
+        android:id="@+id/q2text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.642"
+        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintTop_toTopOf="@+id/q2back"
+        app:layout_constraintBottom_toBottomOf="@+id/q2back"
+        app:layout_constraintLeft_toLeftOf="@+id/q2back"
+        app:layout_constraintRight_toRightOf="@+id/q2back"
+        />
+
+
+    <!-- **************************** Second Row **************************** -->
+    <ImageView
+        android:id="@+id/q3back"
+        android:layout_width="123dp"
+        android:layout_height="63dp"
+        android:src="@drawable/button"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintVertical_bias="0.206" />
+
+    <TextView
+        android:id="@+id/q3text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.642"
+        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintTop_toTopOf="@+id/q3back"
+        app:layout_constraintBottom_toBottomOf="@+id/q3back"
+        app:layout_constraintLeft_toLeftOf="@+id/q3back"
+        app:layout_constraintRight_toRightOf="@+id/q3back"
+        />
+
+    <ImageView
+        android:id="@+id/q4back"
+        android:layout_width="123dp"
+        android:layout_height="63dp"
+        android:src="@drawable/button"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintVertical_bias="0.206" />
+
+    <TextView
+        android:id="@+id/q4text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.642"
+        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintTop_toTopOf="@+id/q4back"
+        app:layout_constraintBottom_toBottomOf="@+id/q4back"
+        app:layout_constraintLeft_toLeftOf="@+id/q4back"
+        app:layout_constraintRight_toRightOf="@+id/q4back" />
+
+
+    <!-- **************************** Third Row **************************** -->
+    <ImageView
+        android:id="@+id/q5back"
+        android:layout_width="123dp"
+        android:layout_height="63dp"
+        android:src="@drawable/button"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintVertical_bias="0.351" />
+
+    <TextView
+        android:id="@+id/q5text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.642"
+        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintTop_toTopOf="@+id/q5back"
+        app:layout_constraintBottom_toBottomOf="@+id/q5back"
+        app:layout_constraintLeft_toLeftOf="@+id/q5back"
+        app:layout_constraintRight_toRightOf="@+id/q5back"
+        />
+
+    <ImageView
+        android:id="@+id/q6back"
+        android:layout_width="123dp"
+        android:layout_height="63dp"
+        android:src="@drawable/button"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintVertical_bias="0.351" />
+
+    <TextView
+        android:id="@+id/q6text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.637"
+        app:layout_constraintVertical_bias="0.452"
+        app:layout_constraintTop_toTopOf="@+id/q6back"
+        app:layout_constraintBottom_toBottomOf="@+id/q6back"
+        app:layout_constraintLeft_toLeftOf="@+id/q6back"
+        app:layout_constraintRight_toRightOf="@+id/q6back"
+        />
+
+
+    <!-- **************************** Fourth Row **************************** -->
+    <ImageView
+        android:id="@+id/q7back"
+        android:layout_width="123dp"
+        android:layout_height="63dp"
+        android:src="@drawable/button"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.122" />
+
+    <TextView
+        android:id="@+id/q7text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.642"
+        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintTop_toTopOf="@+id/q7back"
+        app:layout_constraintBottom_toBottomOf="@+id/q7back"
+        app:layout_constraintLeft_toLeftOf="@+id/q7back"
+        app:layout_constraintRight_toRightOf="@+id/q7back"
+        />
+
+    <ImageView
+        android:id="@+id/q8back"
+        android:layout_width="123dp"
+        android:layout_height="63dp"
+        android:src="@drawable/button"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.8" />
+
+    <TextView
+        android:id="@+id/q8text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.637"
+        app:layout_constraintVertical_bias="0.452"
+        app:layout_constraintTop_toTopOf="@+id/q8back"
+        app:layout_constraintBottom_toBottomOf="@+id/q8back"
+        app:layout_constraintLeft_toLeftOf="@+id/q8back"
+        app:layout_constraintRight_toRightOf="@+id/q8back"
+        />
+
+
+    <!-- **************************** Fifth Row **************************** -->
+    <ImageView
+        android:id="@+id/q9back"
+        android:layout_width="123dp"
+        android:layout_height="63dp"
+        android:src="@drawable/button"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintVertical_bias="0.645" />
+
+    <TextView
+        android:id="@+id/q9text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.642"
+        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintTop_toTopOf="@+id/q9back"
+        app:layout_constraintBottom_toBottomOf="@+id/q9back"
+        app:layout_constraintLeft_toLeftOf="@+id/q9back"
+        app:layout_constraintRight_toRightOf="@+id/q9back"
+        />
+
+    <ImageView
+        android:id="@+id/q10back"
+        android:layout_width="123dp"
+        android:layout_height="63dp"
+        android:src="@drawable/button"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintVertical_bias="0.65" />
+
+    <TextView
+        android:id="@+id/q10text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.649"
+        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintTop_toTopOf="@+id/q18back"
+        app:layout_constraintBottom_toBottomOf="@+id/q10back"
+        app:layout_constraintLeft_toLeftOf="@+id/q10back"
+        app:layout_constraintRight_toRightOf="@+id/q10back"
+        />
+
+
+
+
+
+
+    <!-- **************************** Extra UI Elements **************************** -->
+    <TextView
+        android:id="@+id/result1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.767"
+        tools:text="4 x 4" />
+
+    <TextView
+        android:id="@+id/result2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.615"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.765"
+        tools:text="=" />
+
+    <TextView
+        android:id="@+id/result3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.763"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.765"
+        tools:text="16" />
+
+    <ImageView
+        android:id="@+id/clappingMonkey"
+        android:layout_width="111dp"
+        android:layout_height="71dp"
+        android:src="@drawable/monkey1"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintVertical_bias="0.808" />
+    <!---->
+    <!--<ImageView-->
+    <!--android:id="@+id/slappingMonkey"-->
+    <!--android:layout_width="94dp"-->
+    <!--android:layout_height="93dp"-->
+    <!--android:scaleType="centerInside"-->
+    <!--app:srcCompat="@drawable/monkey"-->
+    <!--app:layout_constraintTop_toTopOf="parent"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--android:layout_marginBottom="8dp"-->
+    <!--app:layout_constraintVertical_bias="0.809"-->
+    <!--android:layout_marginLeft="8dp"-->
+    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--android:layout_marginRight="8dp"-->
+    <!--app:layout_constraintRight_toRightOf="parent"-->
+    <!--app:layout_constraintHorizontal_bias="0.186" />-->
+
+</android.support.constraint.ConstraintLayout>
+
