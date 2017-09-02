@@ -1,10 +1,13 @@
 package com.mvk.mathsmemotables;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -13,7 +16,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTouch;
 
-public class Settings extends AppCompatActivity {
+import static com.mvk.mathsmemotables.R.id.playButton;
+
+public class Settings extends Activity {
 
     //ui
     @BindView(R.id.oneBox) CheckBox oneBox;
@@ -27,6 +32,8 @@ public class Settings extends AppCompatActivity {
     @BindView(R.id.nineBox) CheckBox nineBox;
     @BindView(R.id.difficulty) SeekBar difficulty;
     @BindView(R.id.difficultyIndicator) TextView difficultyIndicator;
+    @BindView(R.id.playButton) ImageView playButton;
+    @BindView(R.id.homeButton) ImageView homeButton;
 
 
 //*************************************** OnCreate *************************************************
@@ -130,4 +137,31 @@ public class Settings extends AppCompatActivity {
             difficultyIndicator.setText("Medium");
         else difficultyIndicator.setText("Hard");
     }
+
+//**************************** Navigation Buttons OnClick ******************************************
+    @OnTouch(R.id.playButton)
+    public boolean touchPlay(MotionEvent event) {
+        if(event.getAction() == MotionEvent.ACTION_DOWN) {
+            Controller.getInstance().animateButtonTouched(playButton);
+        } else if (event.getAction() == MotionEvent.ACTION_UP) {
+            Controller.getInstance().animateButtonReleased(playButton);
+            Intent intent = new Intent(this, Controller.getInstance().getGameplayClass());
+            startActivity(intent);
+        }
+        return true;
+    }
+
+    @OnTouch(R.id.homeButton)
+    public boolean touchHome(MotionEvent event) {
+        if(event.getAction() == MotionEvent.ACTION_DOWN) {
+            Controller.getInstance().animateButtonTouched(homeButton);
+        } else if (event.getAction() == MotionEvent.ACTION_UP) {
+            Controller.getInstance().animateButtonReleased(homeButton);
+            Intent intent = new Intent(this, WelcomeScreen.class);
+            startActivity(intent);
+        }
+        return true;
+    }
+
+
 }

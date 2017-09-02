@@ -1,7 +1,10 @@
 package com.mvk.mathsmemotables;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.ImageView;
 
 /**
  * Created by marcin on 10/08/2017.
@@ -23,6 +26,9 @@ class Controller {
     private boolean eight;
     private boolean nine;
 
+    //sound on/off
+    private boolean letsMusicPlay;
+
     /*
      * gameDifficulty is a deciding factor when loading the game activity,
      * (number of cards on the screen - 28-hard, 18-medium, 10-easy)
@@ -43,6 +49,8 @@ class Controller {
         one = two = three = four = five = six = seven = eight = nine = true;
         //sets default game difficulty to medium
         gameDifficulty=1;
+
+        letsMusicPlay = true;
     }
 
 //************************* Disables or enables cardSelected table *********************************
@@ -195,7 +203,52 @@ class Controller {
         return gameDifficulty;
     }
 
+    public boolean isLetsMusicPlay() {
+        return letsMusicPlay;
+    }
+
+    public void setLetsMusicPlay(boolean letsMusicPlay) {
+        this.letsMusicPlay = letsMusicPlay;
+    }
+
+    //************************** Navigation Button pressed animations **********************************
+
     public void setGameDifficulty(int gameDifficulty) {
         this.gameDifficulty = gameDifficulty;
+    }
+
+
+    //on touch down - shrink
+    protected void animateButtonTouched(ImageView imageView){
+        ObjectAnimator buttonXDown = ObjectAnimator.ofFloat(imageView, "scaleX", 1, 0.9f);
+        ObjectAnimator buttonYDown = ObjectAnimator.ofFloat(imageView, "scaleY", 1, 0.9f);
+        AnimatorSet scalePlayButtonDown = new AnimatorSet();
+        scalePlayButtonDown.playTogether(buttonXDown, buttonYDown);
+        scalePlayButtonDown.setDuration(100);
+        scalePlayButtonDown.start();
+
+    }
+
+    //on release - resize to original size
+    protected void animateButtonReleased(ImageView imageView){
+        ObjectAnimator buttonXUp = ObjectAnimator.ofFloat(imageView, "scaleX", 0.9f, 1);
+        ObjectAnimator buttonYUp = ObjectAnimator.ofFloat(imageView, "scaleY", 0.9f, 1);
+        AnimatorSet scalePlayButtonUp = new AnimatorSet();
+        scalePlayButtonUp.playTogether(buttonXUp, buttonYUp);
+        scalePlayButtonUp.setDuration(100);
+        scalePlayButtonUp.start();
+    }
+
+    //on release - resize to original size and changes the imageView to newImageView
+    // used for sound/no sound button
+    protected void animateButtonReleased(ImageView imageView, int newImageView){
+        imageView.setImageResource(newImageView);
+
+        ObjectAnimator buttonXUp = ObjectAnimator.ofFloat(imageView, "scaleX", 0.9f, 1);
+        ObjectAnimator buttonYUp = ObjectAnimator.ofFloat(imageView, "scaleY", 0.9f, 1);
+        AnimatorSet scalePlayButtonUp = new AnimatorSet();
+        scalePlayButtonUp.playTogether(buttonXUp, buttonYUp);
+        scalePlayButtonUp.setDuration(100);
+        scalePlayButtonUp.start();
     }
 }

@@ -2,25 +2,43 @@ package com.mvk.mathsmemotables;
 
 import android.animation.Animator;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.lang.ref.WeakReference;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnTouch;
 
 /**
  * Created by marcin on 26/07/2017.
  */
 
 public class BaseOfGame extends Activity {
+
+    //Runnable references
+    private MyRunnable mRunnable = new MyRunnable(this);
+    //references to cards and text to hide
+    static ImageView cardOne;
+    static ImageView cardTwo;
+    static TextView textOnCardOne;
+    static TextView textOnCardTwo;
+
+    //clapping monkey animation reference
+    static AnimationDrawable frameAnimation;
 
     //UI
     @BindView(R.id.result1) TextView result1;
@@ -36,11 +54,14 @@ public class BaseOfGame extends Activity {
     private int [] secondElements;
     private int [] result;
 
-    //position of elements array, used to randomly allocate elements
+    //position of elements in array, used to randomly allocate elements
     protected int [] positions;
 
     //tracks flipped over cards
     protected boolean[] selected;
+
+    //tracks cards already hidden - to prevent from flipping pairs back
+    protected boolean[] alreadyCompleted;
 
 //*************************************** OnCreate *************************************************
     @Override
@@ -67,15 +88,12 @@ public class BaseOfGame extends Activity {
         textButtons[4] = R.id.q5text;        textButtons[5] = R.id.q6text;
         textButtons[6] = R.id.q7text;        textButtons[7] = R.id.q8text;
         textButtons[8] = R.id.q9text;        textButtons[9] = R.id.q10text;
-
     }
 
 //*************************** Shuffling method for position array **********************************
     // Implementing Fisher–Yates shuffle
     //used to randomly allocate elements of the array
-    static void shuffleArray(int[] ar)
-    {
-        // If running on Java 6 or older, use `new Random()` on RHS here
+    static void shuffleArray(int[] ar) {
         Random rnd = ThreadLocalRandom.current();
         for (int i = Controller.getInstance().getNumberOfCards() - 1; i > 0; i--)
         {
@@ -93,48 +111,78 @@ public class BaseOfGame extends Activity {
         if (button.getAlpha() == 0.0f) {
             //
         }
-        //---------------------------- if two element is already cardSelected ----------------------
+        //---------------------------- if two element is already selected --------------------------
         else if (positionOfAlreadySelectedElement(selected) == -2) {
-            //deselect all (and update tracking array (cardSelected))
-            deselectAll();
-            //select new element
-            flipImage(button, getButtonNumber(button) - 1);
+            Log.d("WhereAreWe", "1");
+         //checks if user doesn't clicks on cards with correct answer which still display on screen
+            if (!alreadyCompleted[getButtonNumber(button)-1]){
+                //deselect all (and update tracking array (cardSelected))
+                deselectAll();
+                //select new element
+                Log.d("WhereAreWe", "1.5");
+                flipImage(button, getButtonNumber(button) - 1, false);
+            }
         }
-        //---------------------------- if one element is already cardSelected ----------------------
+        //---------------------------- if one element is already selected --------------------------
         else if (positionOfAlreadySelectedElement(selected) != -1) {
+            Log.d("WhereAreWe", "2");
             //if user press again on the same button - deselect it
             if (positionOfAlreadySelectedElement(selected) == getButtonNumber(button)) {
-                flipImage(button, getButtonNumber(button) - 1);
+                Log.d("WhereAreWe", "2.5");
+                flipImage(button, getButtonNumber(button) - 1, false);
             }
-            //TODO: finish the method
+
             //compare two values
             // positionOfAlreadySelectedElement(cardSelected) - position of item 1
-            // getButtonNumber(button)                    - position of item 2
+            // getButtonNumber(button)                        - position of item 2
             else {
-                //TODO: change string comparison to maths compare
-                //select second one
-                flipImage(button, getButtonNumber(button) - 1);
 
+                //if  two cars are equal
                 if (getValue(getTextAtPosition(getButtonNumber(button)).getText().toString()) ==
                         getValue(getTextAtPosition(positionOfAlreadySelectedElement(selected)).getText().toString())) {
 
-                    //hides buttons with the same text
-                    button.setAlpha(0.0f);
-                    getButtonAtPosition(positionOfAlreadySelectedElement(selected)).setAlpha(0.0f);
+                    Log.d("WhereAreWe", "3");
+                    flipImage(button, getButtonNumber(button) - 1, true);
 
-                    //hides text on the buttons
-                    getTextAtPosition(getButtonNumber(button)).setVisibility(View.INVISIBLE);
-                    getTextAtPosition(positionOfAlreadySelectedElement(selected)).setVisibility(View.INVISIBLE);
+                    //references for image views and text view on the cards selected
+                    //so they can be hidden inside the runnable
+                    cardOne = button;
+                    cardTwo = getButtonAtPosition(positionOfAlreadySelectedElement(selected));
+                    textOnCardOne = getTextAtPosition(getButtonNumber(button));
+                    textOnCardTwo = getTextAtPosition(positionOfAlreadySelectedElement(selected));
 
+                    //keep reference of position of correct answers
+                    alreadyCompleted[getButtonNumber(button)-1]=true;
+                    alreadyCompleted[positionOfAlreadySelectedElement(selected)-1]=true;
+                    Log.d("Arrays", getSelectedArray()+getAlreadySelectedArray());
+//                    selected[getButtonNumber(button)-1]=false;
+//                    selected[positionOfAlreadySelectedElement(selected)-1]=false;
+                    Log.d("Arrays", getSelectedArray()+getAlreadySelectedArray());
+
+                    //start clapping animation
+                    frameAnimation.start();
+                    //calls the handler in 2 seconds
+                    mHandler.postDelayed(mRunnable, 2000);
+
+                    //display the equation on the blackboard
                     result1.setText(getTextAtPosition(getButtonNumber(button)).getText());
                     result2.setText("=");
                     result3.setText(getTextAtPosition(positionOfAlreadySelectedElement(selected)).getText());
+
+
                 }
+                else{
+                    //select second one
+                    Log.d("WhereAreWe", "4");
+                    flipImage(button, getButtonNumber(button) - 1, false);
+                }
+
             }
         }
         //------------------------------ if no elements have been cardSelected ---------------------
         else {
-            flipImage(button, getButtonNumber(button) - 1);
+            Log.d("WhereAreWe", "5");
+            flipImage(button, getButtonNumber(button) - 1, false);
         }
     }
 //*************************** Returns (background) ImageView at position ***************************
@@ -174,6 +222,7 @@ public class BaseOfGame extends Activity {
         //if there was more than one number cardSelected return -2
         if (count>1)
             toReturn=-2;
+        Log.d("AlreadySelectedPos", toReturn+" ");
         return toReturn;
     }
 
@@ -255,16 +304,24 @@ public class BaseOfGame extends Activity {
     public void deselectAll(){
         for (int i = 0; i < backButtons.length; i++) {
             if (selected[i]==true){
-                ImageView imageView = (ImageView)findViewById(backButtons[i]);
-                flipImage(imageView, i);
+                if (alreadyCompleted[i]==true){
+                    selected[i]=false;
+                }
+                else {
+                    ImageView imageView = (ImageView) findViewById(backButtons[i]);
+                    Log.d("WhereAreWe", "6");
+                    flipImage(imageView, i, false);
+                }
             }
         }
     }
 
 //*************************** Flipping image animation *********************************************
-    public void flipImage(final ImageView iv, final int position) {
-        final Drawable drawable = getResources().getDrawable(R.drawable.button);
-        final Drawable drawable2 = getResources().getDrawable(R.drawable.button_selected);
+    public void flipImage(final ImageView iv, final int position, final boolean correctAnswer) {
+
+        final Drawable notSelectedDrawable = getDrawable(R.drawable.button);
+        final Drawable selectedDrawable = getDrawable(R.drawable.button_selected);
+        final Drawable correctAnswerDrawable = getDrawable(R.drawable.button_correct);
 
         iv.setRotationY(0f);
 
@@ -285,7 +342,7 @@ public class BaseOfGame extends Activity {
                 @Override
                 public void onAnimationEnd(Animator animation) {
 
-                    iv.setImageDrawable(drawable);
+                    iv.setImageDrawable(notSelectedDrawable);
                     selected[position] = false;
                     iv.setRotationY(270f);
                     iv.animate().rotationY(360f).setListener(null);
@@ -314,7 +371,13 @@ public class BaseOfGame extends Activity {
                 public void onAnimationEnd(Animator animation) {
 
                     hideReveal(iv, false);
-                    iv.setImageDrawable(drawable2);
+                    if(correctAnswer){
+                        iv.setImageDrawable(correctAnswerDrawable);
+                        BaseOfGame.cardTwo.setImageDrawable(correctAnswerDrawable);
+                    }
+                    else{
+                        iv.setImageDrawable(selectedDrawable);
+                    }
                     selected[position] = true;
                     iv.setRotationY(-270f);
                     iv.animate().rotationY(-360f).setListener(null);
@@ -340,7 +403,7 @@ public class BaseOfGame extends Activity {
             getTextAtPosition(position).setAlpha(1.0f);
         }
     }
-//************************************* Flip All ***************************************************
+//******************************* Hides values on all cards ****************************************
     public void hideValues(){
         for(int i=0; i<selected.length; i++){
             getTextAtPosition(i+1).setAlpha(0.0f);
@@ -357,4 +420,77 @@ public class BaseOfGame extends Activity {
 
         textView.setTypeface(pacifico);
     }
+
+//***************************** Runnable to hide the cards *****************************************
+
+    private static class MyHandler extends Handler {}
+    private final MyHandler mHandler = new MyHandler();
+
+    public static class MyRunnable implements Runnable {
+        private final WeakReference<Activity> mActivity;
+
+        public MyRunnable(Activity activity) {
+            mActivity = new WeakReference<>(activity);
+        }
+
+        //hides the cards 2 seconds after they have been exposed
+        @Override
+        public void run() {
+            Activity activity = mActivity.get();
+            if (activity != null) {
+                //hides cards and text on them
+                BaseOfGame.getCardOne().setAlpha(0.0f);
+                BaseOfGame.getCardTwo().setAlpha(0.0f);
+                BaseOfGame.getTextOnCardOne().setAlpha(0.0f);
+                BaseOfGame.getTextOnCardTwo().setAlpha(0.0f);
+                BaseOfGame.getFrameAnimation().stop();
+
+                //TODO: if last two cards - game over
+                 
+            }
+        }
+    }
+
+//********************************* Getters and Setters ********************************************
+    public static ImageView getCardOne() {
+        return cardOne;
+    }
+
+    public static ImageView getCardTwo() {
+        return cardTwo;
+    }
+
+    public static TextView getTextOnCardOne() {
+        return textOnCardOne;
+    }
+
+    public static TextView getTextOnCardTwo() {
+        return textOnCardTwo;
+    }
+
+
+    public static AnimationDrawable getFrameAnimation() {
+        return frameAnimation;
+    }
+
+//TEsTING*TEsTING*TEsTING*TEsTING*TEsTING*TEsTING*TEsTING*TEsTING*TEsTING*TEsTING*TEsTING*TEsTING*
+    public String getSelectedArray(){
+        String str = "-------------SELECTED-------------------------\n";
+        int i=0;
+        for (boolean select: selected){
+            str+=i+" - "+select+"\n";
+            i++;
+        }
+        return str;
+    }
+    public String getAlreadySelectedArray(){
+        String str = "-------------COMPLETED-----------------------\n";
+        int i=0;
+        for (boolean select: alreadyCompleted){
+            str+=i+" - "+select+"\n";
+            i++;
+        }
+        return str;
+    }
 }
+

@@ -28,18 +28,19 @@
         android:id="@+id/q1text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/textview"
-        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintVertical_bias="0.411"
-        app:layout_constraintTop_toTopOf="@+id/q1back"
+        android:layout_marginTop="8dp"
+        android:text="@string/textview"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/q1back"
+        app:layout_constraintHorizontal_bias="0.642"
         app:layout_constraintLeft_toLeftOf="@+id/q1back"
         app:layout_constraintRight_toRightOf="@+id/q1back"
-        />
+        app:layout_constraintTop_toTopOf="@+id/q1back"
+        app:layout_constraintVertical_bias="0.411"
+        tools:text="TextView" />
 
     <ImageView
         android:id="@+id/q2back"
@@ -66,6 +67,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
+        android:textSize="24sp"
         app:layout_constraintHorizontal_bias="0.642"
         app:layout_constraintVertical_bias="0.411"
         app:layout_constraintTop_toTopOf="@+id/q2back"
@@ -101,6 +103,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
+        android:textSize="24sp"
         app:layout_constraintHorizontal_bias="0.642"
         app:layout_constraintVertical_bias="0.411"
         app:layout_constraintTop_toTopOf="@+id/q3back"
@@ -114,6 +117,7 @@
         android:layout_width="123dp"
         android:layout_height="63dp"
         android:src="@drawable/button"
+
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -134,6 +138,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
+        android:textSize="24sp"
         app:layout_constraintHorizontal_bias="0.642"
         app:layout_constraintVertical_bias="0.411"
         app:layout_constraintTop_toTopOf="@+id/q4back"
@@ -168,6 +173,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
+        android:textSize="24sp"
         app:layout_constraintHorizontal_bias="0.642"
         app:layout_constraintVertical_bias="0.411"
         app:layout_constraintTop_toTopOf="@+id/q5back"
@@ -201,6 +207,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
+        android:textSize="24sp"
         app:layout_constraintHorizontal_bias="0.637"
         app:layout_constraintVertical_bias="0.452"
         app:layout_constraintTop_toTopOf="@+id/q6back"
@@ -235,6 +242,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
+        android:textSize="24sp"
         app:layout_constraintHorizontal_bias="0.642"
         app:layout_constraintVertical_bias="0.411"
         app:layout_constraintTop_toTopOf="@+id/q7back"
@@ -267,6 +275,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
+        android:textSize="24sp"
         app:layout_constraintHorizontal_bias="0.637"
         app:layout_constraintVertical_bias="0.452"
         app:layout_constraintTop_toTopOf="@+id/q8back"
@@ -302,6 +311,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
+        android:textSize="24sp"
         app:layout_constraintHorizontal_bias="0.642"
         app:layout_constraintVertical_bias="0.411"
         app:layout_constraintTop_toTopOf="@+id/q9back"
@@ -332,12 +342,13 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.649"
-        app:layout_constraintVertical_bias="0.411"
-        app:layout_constraintTop_toTopOf="@+id/q18back"
+        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintVertical_bias="0.263"
+        app:layout_constraintTop_toTopOf="@+id/q10back"
         app:layout_constraintBottom_toBottomOf="@+id/q10back"
         app:layout_constraintLeft_toLeftOf="@+id/q10back"
         app:layout_constraintRight_toRightOf="@+id/q10back"
@@ -417,23 +428,59 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintHorizontal_bias="0.113"
         app:layout_constraintVertical_bias="0.808" />
-    <!---->
-    <!--<ImageView-->
-    <!--android:id="@+id/slappingMonkey"-->
-    <!--android:layout_width="94dp"-->
-    <!--android:layout_height="93dp"-->
-    <!--android:scaleType="centerInside"-->
-    <!--app:srcCompat="@drawable/monkey"-->
-    <!--app:layout_constraintTop_toTopOf="parent"-->
-    <!--android:layout_marginTop="8dp"-->
-    <!--app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--android:layout_marginBottom="8dp"-->
-    <!--app:layout_constraintVertical_bias="0.809"-->
-    <!--android:layout_marginLeft="8dp"-->
-    <!--app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--android:layout_marginRight="8dp"-->
-    <!--app:layout_constraintRight_toRightOf="parent"-->
-    <!--app:layout_constraintHorizontal_bias="0.186" />-->
+
+    <ImageView
+        android:id="@+id/soundButton"
+        android:layout_width="59dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/sound"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/settingsButton"
+        android:layout_width="59dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.998"
+        app:layout_constraintHorizontal_bias="0.276" />
+
+    <ImageView
+        android:id="@+id/homeButton"
+        android:layout_width="59dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.998" />
 
 </android.support.constraint.ConstraintLayout>
 
