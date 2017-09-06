@@ -1,10 +1,15 @@
 package com.mvk.mathsmemotables;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Slide;
 import android.view.MotionEvent;
+import android.view.Window;
 import android.widget.ImageView;
 
 import java.util.Arrays;
@@ -25,6 +30,9 @@ public class GamePlayMid extends BaseOfGame {
 //*************************************** OnCreate *************************************************
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        setupTransitions();
+
         super.onCreate(savedInstanceState);
 
         positions = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17};
@@ -64,9 +72,7 @@ public class GamePlayMid extends BaseOfGame {
         img.setImageResource(R.drawable.monkey);
         // Get the background, which has been compiled to an AnimationDrawable object.
         frameAnimation = (AnimationDrawable) img.getDrawable();
-
     }
-
 
 
 //************************************ Card OnClick ************************************************
@@ -85,7 +91,8 @@ public class GamePlayMid extends BaseOfGame {
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             Controller.getInstance().animateButtonReleased(homeButton);
             Intent intent = new Intent(this, WelcomeScreen.class);
-            startActivity(intent);
+            startActivity(intent,
+                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         }
         return true;
     }
@@ -97,7 +104,8 @@ public class GamePlayMid extends BaseOfGame {
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             Controller.getInstance().animateButtonReleased(settingButton);
             Intent intent = new Intent(this, Settings.class);
-            startActivity(intent);
+            startActivity(intent,
+                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         }
         return true;
     }
@@ -118,5 +126,12 @@ public class GamePlayMid extends BaseOfGame {
             }
         }
         return true;
+    }
+
+//**************************** Sets up Activity Transitions ****************************************
+    public void setupTransitions(){
+        getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
+        getWindow().setEnterTransition(new Fade());
+        getWindow().setExitTransition(new Fade());
     }
 }

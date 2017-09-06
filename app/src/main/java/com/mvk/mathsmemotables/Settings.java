@@ -1,11 +1,21 @@
 package com.mvk.mathsmemotables;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.ChangeBounds;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Scene;
+import android.transition.Slide;
+import android.transition.TransitionManager;
+import android.transition.TransitionSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -40,6 +50,10 @@ public class Settings extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Transitions
+        setupTransitions();
+
         setContentView(R.layout.activity_settings);
 
         ButterKnife.bind(this);
@@ -146,7 +160,8 @@ public class Settings extends Activity {
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             Controller.getInstance().animateButtonReleased(playButton);
             Intent intent = new Intent(this, Controller.getInstance().getGameplayClass());
-            startActivity(intent);
+            startActivity(intent,
+                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         }
         return true;
     }
@@ -158,10 +173,17 @@ public class Settings extends Activity {
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             Controller.getInstance().animateButtonReleased(homeButton);
             Intent intent = new Intent(this, WelcomeScreen.class);
-            startActivity(intent);
+//            startActivity(intent);
+            startActivity(intent,
+                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         }
         return true;
     }
 
-
+//**************************** Sets up Activity Transitions ****************************************
+    public void setupTransitions(){
+        getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
+        getWindow().setEnterTransition(new Fade());
+        getWindow().setExitTransition(new Fade());
+    }
 }

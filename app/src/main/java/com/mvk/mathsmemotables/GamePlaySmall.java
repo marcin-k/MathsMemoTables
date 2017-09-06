@@ -1,10 +1,14 @@
 package com.mvk.mathsmemotables;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.Explode;
+import android.transition.Fade;
 import android.view.MotionEvent;
+import android.view.Window;
 import android.widget.ImageView;
 
 import java.util.Arrays;
@@ -26,6 +30,8 @@ public class GamePlaySmall extends BaseOfGame {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setupTransitions();
 
         positions = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
@@ -74,7 +80,8 @@ public class GamePlaySmall extends BaseOfGame {
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             Controller.getInstance().animateButtonReleased(homeButton);
             Intent intent = new Intent(this, WelcomeScreen.class);
-            startActivity(intent);
+            startActivity(intent,
+                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         }
         return true;
     }
@@ -86,7 +93,8 @@ public class GamePlaySmall extends BaseOfGame {
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             Controller.getInstance().animateButtonReleased(settingButton);
             Intent intent = new Intent(this, Settings.class);
-            startActivity(intent);
+            startActivity(intent,
+                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         }
         return true;
     }
@@ -107,5 +115,12 @@ public class GamePlaySmall extends BaseOfGame {
             }
         }
         return true;
+    }
+
+//**************************** Sets up Activity Transitions ****************************************
+    public void setupTransitions(){
+        getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
+        getWindow().setEnterTransition(new Fade());
+        getWindow().setExitTransition(new Fade());
     }
 }

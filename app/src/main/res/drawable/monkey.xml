@@ -3,12 +3,12 @@
     android:oneshot="false">
     <item android:drawable="@drawable/monkey1"
         android:duration="70"/>
-    <item android:drawable="@drawable/monkey2"
-        android:duration="70"/>
+    <!--<item android:drawable="@drawable/monkey2"-->
+        <!--android:duration="70"/>-->
     <item android:drawable="@drawable/monkey3"
         android:duration="70"/>
-    <item android:drawable="@drawable/monkey4"
-        android:duration="70"/>
+    <!--<item android:drawable="@drawable/monkey4"-->
+        <!--android:duration="70"/>-->
     <item android:drawable="@drawable/monkey5"
         android:duration="70"/>
     <item android:drawable="@drawable/monkey6"

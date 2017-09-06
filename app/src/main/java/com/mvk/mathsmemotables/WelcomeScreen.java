@@ -3,8 +3,10 @@ package com.mvk.mathsmemotables;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.transition.Explode;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 
@@ -27,7 +29,6 @@ public class WelcomeScreen extends Activity {
         setContentView(R.layout.activity_welcome_screen);
         ButterKnife.bind(this);
 
-
 //        //face animation
 //        ImageView img = (ImageView)findViewById(R.id.welcome_monkey_head);
 //        img.setImageResource(R.drawable.welcome_monkey);
@@ -44,7 +45,9 @@ public class WelcomeScreen extends Activity {
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             Controller.getInstance().animateButtonReleased(playButton);
             Intent intent = new Intent(this, Controller.getInstance().getGameplayClass());
-            startActivity(intent);
+//            startActivity(intent);
+            startActivity(intent,
+                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         }
         return true;
     }
@@ -56,7 +59,9 @@ public class WelcomeScreen extends Activity {
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             Controller.getInstance().animateButtonReleased(settingButton);
             Intent intent = new Intent(this, Settings.class);
-            startActivity(intent);
+            //startActivity(intent);
+            startActivity(intent,
+                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         }
         return true;
     }
