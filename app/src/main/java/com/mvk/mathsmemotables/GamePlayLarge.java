@@ -30,6 +30,8 @@ public class GamePlayLarge extends BaseOfGame {
 
         setupTransitions();
 
+        numberOfCardPairs = 14;
+
         positions = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
                 19, 20, 21, 22, 23, 24, 25, 26, 27};
 
@@ -76,7 +78,7 @@ public class GamePlayLarge extends BaseOfGame {
         }
 
         //creates references to clapping monkey animation
-        ImageView img = (ImageView) findViewById(R.id.clappingMonkey);
+        ImageView img = findViewById(R.id.clappingMonkey);
         img.setImageResource(R.drawable.monkey);
         // Get the background, which has been compiled to an AnimationDrawable object.
         frameAnimation = (AnimationDrawable) img.getDrawable();

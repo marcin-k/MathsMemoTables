@@ -33,6 +33,8 @@ public class GamePlaySmall extends BaseOfGame {
 
         setupTransitions();
 
+        numberOfCardPairs = 5;
+
         positions = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
         setContentView(R.layout.activity_game_play_small);
@@ -56,7 +58,7 @@ public class GamePlaySmall extends BaseOfGame {
         }
 
         //creates references to clapping monkey animation
-        ImageView img = (ImageView) findViewById(R.id.clappingMonkey);
+        ImageView img = findViewById(R.id.clappingMonkey);
         img.setImageResource(R.drawable.monkey);
         // Get the background, which has been compiled to an AnimationDrawable object.
         frameAnimation = (AnimationDrawable) img.getDrawable();

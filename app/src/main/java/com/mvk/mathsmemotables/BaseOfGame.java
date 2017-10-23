@@ -2,6 +2,7 @@ package com.mvk.mathsmemotables;
 
 import android.animation.Animator;
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
@@ -30,6 +31,9 @@ import butterknife.OnTouch;
  */
 
 public class BaseOfGame extends Activity {
+
+    //number of pairs of cards to be flipped
+    protected static int numberOfCardPairs;
 
     //Runnable references
     private MyRunnable mRunnable = new MyRunnable(this);
@@ -149,6 +153,9 @@ public class BaseOfGame extends Activity {
                 if (getValue(getTextAtPosition(getButtonNumber(button)).getText().toString()) ==
                         getValue(getTextAtPosition(positionOfAlreadySelectedElement(selected)).getText().toString())) {
 
+                    //decrease number of pairs to track when to end game
+                    numberOfCardPairs--;
+
                     Log.d("WhereAreWe", "3");
                     flipImage(button, getButtonNumber(button) - 1, true);
 
@@ -195,13 +202,13 @@ public class BaseOfGame extends Activity {
     }
 //*************************** Returns (background) ImageView at position ***************************
     public ImageView getButtonAtPosition(int position){
-        ImageView imageView = (ImageView)findViewById(backButtons[position-1]);
+        ImageView imageView = findViewById(backButtons[position-1]);
         return imageView;
     }
 
 //**************************** Returns (text) TextView at position *********************************
     public TextView getTextAtPosition(int position){
-        TextView textView = (TextView)findViewById(textButtons[position-1]);
+        TextView textView = findViewById(textButtons[position-1]);
         return textView;
     }
 
@@ -209,7 +216,7 @@ public class BaseOfGame extends Activity {
     public int getButtonNumber(ImageView imageView) {
         int imageNumber = -1;
         for (int i = 0; i < backButtons.length; i++) {
-            if (imageView == (ImageView)findViewById(backButtons[i])) {
+            if (imageView == findViewById(backButtons[i])) {
                 //(i+1) - array starts with 0 while buttons count from 1
                 imageNumber = i + 1;
             }
@@ -281,13 +288,13 @@ public class BaseOfGame extends Activity {
 
         //allocate all equations
         for (int i=0; i < Controller.getInstance().getNumberOfCards()/2; i++){
-            TextView textView = (TextView)findViewById(textButtons[positions[i]]);
+            TextView textView = findViewById(textButtons[positions[i]]);
             textView.setText(firstElements[i]+" x "+secondElements[i]);
         }
 
         //allocate results
         for (int i=Controller.getInstance().getNumberOfCards()/2; i < Controller.getInstance().getNumberOfCards(); i++){
-            TextView textView = (TextView)findViewById(textButtons[positions[i]]);
+            TextView textView = findViewById(textButtons[positions[i]]);
             textView.setText(result[i-Controller.getInstance().getNumberOfCards()/2]+"");
         }
     }
@@ -317,7 +324,7 @@ public class BaseOfGame extends Activity {
                     selected[i]=false;
                 }
                 else {
-                    ImageView imageView = (ImageView) findViewById(backButtons[i]);
+                    ImageView imageView = findViewById(backButtons[i]);
                     Log.d("WhereAreWe", "6");
                     flipImage(imageView, i, false);
                 }
@@ -458,8 +465,14 @@ public class BaseOfGame extends Activity {
 
                 BaseOfGame.getFrameAnimation().stop();
 
-                //TODO: if last two cards - game over
-                 
+                //go to game over screen if no more cards left to be flipped
+                if (getNumberOfPairsLeft()==0){
+                    Log.d("WhereAreWe", "Game Over");
+                    //go to game over screen
+                    Intent intent = new Intent(activity, GameOver.class);
+                    activity.startActivity(intent,
+                            ActivityOptions.makeSceneTransitionAnimation(activity).toBundle());
+                }
             }
         }
     }
@@ -472,30 +485,14 @@ public class BaseOfGame extends Activity {
     public static ArrayList<TextView> getTextOnCards() {
         return textOnCards;
     }
-
+    public static int getNumberOfPairsLeft(){
+        return numberOfCardPairs;
+    }
 
     public static AnimationDrawable getFrameAnimation() {
         return frameAnimation;
     }
 
-//TEsTING*TEsTING*TEsTING*TEsTING*TEsTING*TEsTING*TEsTING*TEsTING*TEsTING*TEsTING*TEsTING*TEsTING*
-    public String getSelectedArray(){
-        String str = "-------------SELECTED-------------------------\n";
-        int i=0;
-        for (boolean select: selected){
-            str+=i+" - "+select+"\n";
-            i++;
-        }
-        return str;
-    }
-    public String getAlreadySelectedArray(){
-        String str = "-------------COMPLETED-----------------------\n";
-        int i=0;
-        for (boolean select: alreadyCompleted){
-            str+=i+" - "+select+"\n";
-            i++;
-        }
-        return str;
-    }
+
 }
 

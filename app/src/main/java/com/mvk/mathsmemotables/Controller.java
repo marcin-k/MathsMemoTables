@@ -59,58 +59,31 @@ class Controller {
         boolean toReturn;
         switch (number){
             case "one":
-                if (one)
-                    one=false;
-                else
-                    one=true;
+                one = !one;
                 break;
             case "two":
-                if (two)
-                    two=false;
-                else
-                    two=true;
+                two = !two;
                 break;
             case "three":
-                if (three)
-                    three=false;
-                else
-                    three=true;
+                three = !three;
                 break;
             case "four":
-                if (four)
-                    four=false;
-                else
-                    four=true;
+                four = !four;
                 break;
             case "five":
-                if (five)
-                    five=false;
-                else
-                    five=true;
+                five = !five;
                 break;
             case "six":
-                if (six)
-                    six=false;
-                else
-                    six=true;
+                six = !six;
                 break;
             case "seven":
-                if (seven)
-                    seven=false;
-                else
-                    seven=true;
+                seven = !seven;
                 break;
             case "eight":
-                if (eight)
-                    eight=false;
-                else
-                    eight=true;
+                eight = !eight;
                 break;
             case "nine":
-                if (nine)
-                    nine=false;
-                else
-                    nine=true;
+                nine = !nine;
                 break;
         }
     }
@@ -136,10 +109,7 @@ class Controller {
             counter++;
         if (nine)
             counter++;
-        if (counter>MIN_NUM_OF_TABLES)
-            return true;
-        else
-            return false;
+        return counter > MIN_NUM_OF_TABLES;
     }
 
 //******************** Checks if number passed in is enabled (cardSelected) ************************

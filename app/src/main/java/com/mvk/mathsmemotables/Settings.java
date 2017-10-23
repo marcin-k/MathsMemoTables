@@ -117,21 +117,21 @@ public class Settings extends Activity {
 
 //********************* Returns String format number from checkbox *********************************
     private String getStringFromCheckBox(CheckBox checkBox){
-        if (checkBox == (CheckBox)findViewById(R.id.oneBox))
+        if (checkBox == findViewById(R.id.oneBox))
             return "one";
-        else if (checkBox == (CheckBox)findViewById(R.id.twoBox))
+        else if (checkBox == findViewById(R.id.twoBox))
             return "two";
-        else if (checkBox == (CheckBox)findViewById(R.id.threeBox))
+        else if (checkBox == findViewById(R.id.threeBox))
             return "three";
-        else if (checkBox == (CheckBox)findViewById(R.id.fourBox))
+        else if (checkBox == findViewById(R.id.fourBox))
             return "four";
-        else if (checkBox == (CheckBox)findViewById(R.id.fiveBox))
+        else if (checkBox == findViewById(R.id.fiveBox))
             return "five";
-        else if (checkBox == (CheckBox)findViewById(R.id.sixBox))
+        else if (checkBox == findViewById(R.id.sixBox))
             return "six";
-        else if (checkBox == (CheckBox)findViewById(R.id.sevenBox))
+        else if (checkBox == findViewById(R.id.sevenBox))
             return "seven";
-        else if (checkBox == (CheckBox)findViewById(R.id.eightBox))
+        else if (checkBox == findViewById(R.id.eightBox))
             return "eight";
         else
             return "nine";
