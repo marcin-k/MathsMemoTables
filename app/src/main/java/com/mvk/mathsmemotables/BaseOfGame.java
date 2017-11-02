@@ -37,6 +37,7 @@ public class BaseOfGame extends Activity {
 
     //Runnable references
     private MyRunnable mRunnable = new MyRunnable(this);
+    protected TimeRunnable mTimeRunnable = new TimeRunnable(this);
 
     //references to cards and text to hide
     private static ArrayList<ImageView> cards;
@@ -71,6 +72,9 @@ public class BaseOfGame extends Activity {
     //tracks cards already hidden - to prevent from flipping pairs back
     protected boolean[] alreadyCompleted;
 
+    //game duration in seconds
+    protected int gameDuration;
+
 //*************************************** OnCreate *************************************************
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +92,6 @@ public class BaseOfGame extends Activity {
         result = new int[Controller.getInstance().getNumberOfCards()/2];
         positions = new int[Controller.getInstance().getNumberOfCards()];
 
-
         backButtons[0] = R.id.q1back;        backButtons[1] = R.id.q2back;
         backButtons[2] = R.id.q3back;        backButtons[3] = R.id.q4back;
         backButtons[4] = R.id.q5back;        backButtons[5] = R.id.q6back;
@@ -100,6 +103,13 @@ public class BaseOfGame extends Activity {
         textButtons[4] = R.id.q5text;        textButtons[5] = R.id.q6text;
         textButtons[6] = R.id.q7text;        textButtons[7] = R.id.q8text;
         textButtons[8] = R.id.q9text;        textButtons[9] = R.id.q10text;
+
+        //resets the duration counter
+        Controller.getInstance().setGameDuration(0);
+
+        //handler to measure the duration of the game
+        mHandler.postDelayed(mTimeRunnable, 1000);
+
     }
 
 //*************************** Shuffling method for position array **********************************
@@ -442,7 +452,7 @@ public class BaseOfGame extends Activity {
     private static class MyHandler extends Handler {}
     private final MyHandler mHandler = new MyHandler();
 
-    public static class MyRunnable implements Runnable {
+    public class MyRunnable implements Runnable {
         private final WeakReference<Activity> mActivity;
 
         public MyRunnable(Activity activity) {
@@ -467,7 +477,14 @@ public class BaseOfGame extends Activity {
 
                 //go to game over screen if no more cards left to be flipped
                 if (getNumberOfPairsLeft()==0){
-                    Log.d("WhereAreWe", "Game Over");
+
+
+                    //passes the game duration to the controller
+                    Controller.getInstance().setGameDuration(gameDuration);
+
+                    //passes the equations elements to controller
+                    Controller.getInstance().copyEquationsValues(firstElements, secondElements);
+
                     //go to game over screen
                     Intent intent = new Intent(activity, GameOver.class);
                     activity.startActivity(intent,
@@ -476,6 +493,25 @@ public class BaseOfGame extends Activity {
             }
         }
     }
+
+//*************************** Runnable to calculate game time **************************************
+
+        public class TimeRunnable implements Runnable {
+            private final WeakReference<Activity> mActivity;
+
+            public TimeRunnable(Activity activity) {
+                mActivity = new WeakReference<>(activity);
+            }
+
+            @Override
+            public void run() {
+                Activity activity = mActivity.get();
+                if (activity != null) {
+                    gameDuration++;
+                    mHandler.postDelayed(mTimeRunnable, 1000);
+                }
+            }
+        }
 
 //********************************* Getters and Setters ********************************************
 

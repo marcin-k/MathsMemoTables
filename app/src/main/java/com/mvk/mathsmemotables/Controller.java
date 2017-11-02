@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.ImageView;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 /**
  * Created by marcin on 10/08/2017.
  */
@@ -38,6 +41,13 @@ class Controller {
      */
     private int gameDifficulty;
 
+    //duration of the game in seconds
+    private int gameDuration;
+
+    //copies of the arrays storing the equations
+    private int[] copyOfFirstElement;
+    private int[] copyOfSecondElement;
+
     private static final Controller ourInstance = new Controller();
     static Controller getInstance() {
         return ourInstance;
@@ -51,6 +61,8 @@ class Controller {
         gameDifficulty=1;
 
         letsMusicPlay = true;
+
+        gameDuration=0;
     }
 
 //************************* Disables or enables cardSelected table *********************************
@@ -147,6 +159,14 @@ class Controller {
         return toReturn;
     }
 
+    //TODO: JUNIT test on the method
+//*********** Copies the equations values to repeat questions in different form ********************
+    public void copyEquationsValues(int[] firstElement, int[] secondElement){
+        copyOfFirstElement  = Arrays.copyOf(firstElement, firstElement.length);
+        copyOfSecondElement = Arrays.copyOf(secondElement, secondElement.length);
+    }
+
+
 //*********************** Returns number of cards used in the game *********************************
     public int getNumberOfCards(){
         if (gameDifficulty==0)
@@ -179,6 +199,14 @@ class Controller {
 
     public void setLetsMusicPlay(boolean letsMusicPlay) {
         this.letsMusicPlay = letsMusicPlay;
+    }
+
+    public int getGameDuration() {
+        return gameDuration;
+    }
+
+    public void setGameDuration(int gameDuration) {
+        this.gameDuration = gameDuration;
     }
 
     //************************** Navigation Button pressed animations **********************************

@@ -30,7 +30,8 @@
         <activity
             android:name=".GamePlaySmall"
             android:screenOrientation="portrait" />
-        <activity android:name=".GameOver"></activity>
+        <activity android:name=".GameOver" />
+        <activity android:name=".ReCheck"></activity>
     </application>
 
 </manifest>
