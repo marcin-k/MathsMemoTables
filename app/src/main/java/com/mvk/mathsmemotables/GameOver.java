@@ -16,7 +16,7 @@ import butterknife.OnTouch;
 public class GameOver extends AppCompatActivity {
 
     @BindView(R.id.textView)TextView time;
-    @BindView(R.id.checkYourselfButton) Button checkYourselfButton;
+//    @BindView(R.id.checkYourselfButton) Button checkYourselfButton;
 
 
 //*************************************** OnCreate *************************************************
@@ -35,20 +35,20 @@ public class GameOver extends AppCompatActivity {
 
 
 //**************************** Navigation Buttons OnClick ******************************************
-    @OnTouch(R.id.checkYourselfButton)
-    public boolean checkYourself(MotionEvent event) {
-        if(event.getAction() == MotionEvent.ACTION_DOWN) {
-            //TODO: needs a custom button
-            //Controller.getInstance().animateButtonTouched(checkYourselfButton);
-        } else if (event.getAction() == MotionEvent.ACTION_UP) {
-            //TODO: needs a custom button
-            //Controller.getInstance().animateButtonReleased(checkYourselfButton);
-            Intent intent = new Intent(this, ReCheck.class);
-            startActivity(intent,
-                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
-        }
-        return true;
-    }
+//    @OnTouch(R.id.checkYourselfButton)
+//    public boolean checkYourself(MotionEvent event) {
+//        if(event.getAction() == MotionEvent.ACTION_DOWN) {
+//            //TODO: needs a custom button
+//            //Controller.getInstance().animateButtonTouched(checkYourselfButton);
+//        } else if (event.getAction() == MotionEvent.ACTION_UP) {
+//            //TODO: needs a custom button
+//            //Controller.getInstance().animateButtonReleased(checkYourselfButton);
+//            Intent intent = new Intent(this, ReCheck.class);
+//            startActivity(intent,
+//                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+//        }
+//        return true;
+//    }
 
 
 }
