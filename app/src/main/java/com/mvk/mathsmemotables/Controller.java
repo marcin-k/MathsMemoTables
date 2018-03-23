@@ -2,7 +2,11 @@ package com.mvk.mathsmemotables;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.Activity;
+import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -47,6 +51,12 @@ class Controller {
     //copies of the arrays storing the equations
     private int[] copyOfFirstElement;
     private int[] copyOfSecondElement;
+
+    //music player
+    protected MediaPlayer mediaPlayer;
+
+    //tracks if music was suppose to play when app is in background
+    protected boolean wasMusicPlaying = false;
 
     private static final Controller ourInstance = new Controller();
     static Controller getInstance() {
@@ -100,8 +110,8 @@ class Controller {
         }
     }
 
-//******************** Checks if at least MIN_NUM_OF_TABLES is cardSelected ************************
-    private boolean checkIfMinNumberOfTablesIsSelected(){
+//***************************** Checks how many tables is selected *********************************
+    public int howManyTablesSelected(){
         int counter = 0;
         if (one)
             counter++;
@@ -121,7 +131,7 @@ class Controller {
             counter++;
         if (nine)
             counter++;
-        return counter > MIN_NUM_OF_TABLES;
+        return counter;
     }
 
 //******************** Checks if number passed in is enabled (cardSelected) ************************
@@ -197,8 +207,18 @@ class Controller {
         return letsMusicPlay;
     }
 
-    public void setLetsMusicPlay(boolean letsMusicPlay) {
+    public void setLetsMusicPlay(boolean letsMusicPlay, Context context) {
         this.letsMusicPlay = letsMusicPlay;
+        if (letsMusicPlay){
+            //play music
+            mediaPlayer = MediaPlayer.create(context, R.raw.bgloop);
+            mediaPlayer.setLooping(true);
+            mediaPlayer.start();
+        }
+        else{
+            //stop the music
+            mediaPlayer.stop();
+        }
     }
 
     public int getGameDuration() {
@@ -207,6 +227,14 @@ class Controller {
 
     public void setGameDuration(int gameDuration) {
         this.gameDuration = gameDuration;
+    }
+
+    public void setWasMusicPlaying(boolean setting){
+        this.wasMusicPlaying = setting;
+    }
+
+    public boolean getWasMusicPlaying(){
+        return this.wasMusicPlaying;
     }
 
     //************************** Navigation Button pressed animations **********************************

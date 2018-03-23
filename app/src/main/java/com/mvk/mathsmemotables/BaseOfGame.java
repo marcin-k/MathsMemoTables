@@ -110,6 +110,7 @@ public class BaseOfGame extends Activity {
         //handler to measure the duration of the game
         mHandler.postDelayed(mTimeRunnable, 1000);
 
+
     }
 
 //*************************** Shuffling method for position array **********************************

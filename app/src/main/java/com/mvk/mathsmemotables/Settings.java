@@ -13,20 +13,26 @@ import android.transition.Slide;
 import android.transition.TransitionManager;
 import android.transition.TransitionSet;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTouch;
 
+import static android.widget.Toast.LENGTH_SHORT;
 import static com.mvk.mathsmemotables.R.id.playButton;
+
 
 public class Settings extends Activity {
 
@@ -44,6 +50,7 @@ public class Settings extends Activity {
     @BindView(R.id.difficultyIndicator) TextView difficultyIndicator;
     @BindView(R.id.playButton) ImageView playButton;
     @BindView(R.id.homeButton) ImageView homeButton;
+    @BindView(R.id.soundButton) ImageView soundButton;
 
 
 //*************************************** OnCreate *************************************************
@@ -155,27 +162,49 @@ public class Settings extends Activity {
 //**************************** Navigation Buttons OnClick ******************************************
     @OnTouch(R.id.playButton)
     public boolean touchPlay(MotionEvent event) {
-        if(event.getAction() == MotionEvent.ACTION_DOWN) {
-            Controller.getInstance().animateButtonTouched(playButton);
-        } else if (event.getAction() == MotionEvent.ACTION_UP) {
-            Controller.getInstance().animateButtonReleased(playButton);
-            Intent intent = new Intent(this, Controller.getInstance().getGameplayClass());
-            startActivity(intent,
-                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+        if (checkSettins()) {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                Controller.getInstance().animateButtonTouched(playButton);
+            } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                Controller.getInstance().animateButtonReleased(playButton);
+                Intent intent = new Intent(this, Controller.getInstance().getGameplayClass());
+                startActivity(intent,
+                        ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+            }
         }
         return true;
     }
 
     @OnTouch(R.id.homeButton)
     public boolean touchHome(MotionEvent event) {
-        if(event.getAction() == MotionEvent.ACTION_DOWN) {
-            Controller.getInstance().animateButtonTouched(homeButton);
-        } else if (event.getAction() == MotionEvent.ACTION_UP) {
-            Controller.getInstance().animateButtonReleased(homeButton);
-            Intent intent = new Intent(this, WelcomeScreen.class);
+        if (checkSettins()) {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                Controller.getInstance().animateButtonTouched(homeButton);
+            } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                Controller.getInstance().animateButtonReleased(homeButton);
+                Intent intent = new Intent(this, WelcomeScreen.class);
 //            startActivity(intent);
-            startActivity(intent,
-                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                startActivity(intent,
+                        ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+            }
+        }
+        return true;
+    }
+
+    @OnTouch(R.id.soundButton)
+    public boolean touchSound(MotionEvent event) {
+        if(event.getAction() == MotionEvent.ACTION_DOWN) {
+            Controller.getInstance().animateButtonTouched(soundButton);
+        } else if (event.getAction() == MotionEvent.ACTION_UP) {
+            Controller.getInstance().animateButtonReleased(soundButton);
+            if (Controller.getInstance().isLetsMusicPlay()){
+                Controller.getInstance().setLetsMusicPlay(false, getApplicationContext());
+                Controller.getInstance().animateButtonReleased(soundButton, R.drawable.no_sound);
+            }
+            else {
+                Controller.getInstance().setLetsMusicPlay(true, getApplicationContext());
+                Controller.getInstance().animateButtonReleased(soundButton, R.drawable.sound);
+            }
         }
         return true;
     }
@@ -186,4 +215,69 @@ public class Settings extends Activity {
         getWindow().setEnterTransition(new Fade());
         getWindow().setExitTransition(new Fade());
     }
+
+//********************** Checks if sufficient number of tables has been selected *******************
+    //returns true if everything is fine
+    public boolean checkSettins(){
+        //for easy and medium checks if at least one value is selected
+        if (difficultyIndicator.getText().equals("Easy")||
+                difficultyIndicator.getText().equals("Medium")){
+            if (Controller.getInstance().howManyTablesSelected() >0){
+                return true;
+            }
+            else{
+                Toast.makeText(getBaseContext(),"Please make sure to select at least one" +
+                                " table",
+                        Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+        //for difficult checks if at least 2 tables have been selected
+        else{
+            if (Controller.getInstance().howManyTablesSelected() >1){
+                return true;
+            }
+            else{
+                Toast.makeText(getBaseContext(),"Please make sure to select at least two" +
+                                " tables, or change difficulty level",
+                        Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+    }
+
+//****************************** Prevents back button messing up settings **************************
+    @Override
+    public void onBackPressed() {
+        if (checkSettins()){
+            super.onBackPressed();
+        }
+    }
+
+//*************************************** OnResume *************************************************
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+//        if (Controller.getInstance().wasMusicPlaying){
+//            Controller.getInstance().setLetsMusicPlay(true, getApplicationContext());
+//        }
+        //changes the music button if music is not playing
+        if (!Controller.getInstance().isLetsMusicPlay()){
+            Controller.getInstance().animateButtonReleased(soundButton, R.drawable.no_sound);
+        }
+        else{
+            Controller.getInstance().animateButtonReleased(soundButton, R.drawable.sound);
+        }
+    }
+
+
+//**************************************** OnStop **************************************************
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        Controller.getInstance().setWasMusicPlaying(Controller.getInstance().isLetsMusicPlay());
+//        Controller.getInstance().setLetsMusicPlay(false, getApplicationContext());
+//    }
 }

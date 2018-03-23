@@ -130,11 +130,11 @@ public class GamePlayLarge extends BaseOfGame {
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             Controller.getInstance().animateButtonReleased(soundButton);
             if (Controller.getInstance().isLetsMusicPlay()){
-                Controller.getInstance().setLetsMusicPlay(false);
+                Controller.getInstance().setLetsMusicPlay(false, getApplicationContext());
                 Controller.getInstance().animateButtonReleased(soundButton, R.drawable.no_sound);
             }
             else {
-                Controller.getInstance().setLetsMusicPlay(true);
+                Controller.getInstance().setLetsMusicPlay(true, getApplicationContext());
                 Controller.getInstance().animateButtonReleased(soundButton, R.drawable.sound);
             }
         }
@@ -146,5 +146,18 @@ public class GamePlayLarge extends BaseOfGame {
         getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
         getWindow().setEnterTransition(new Fade());
         getWindow().setExitTransition(new Fade());
+    }
+
+//*************************************** OnResume *************************************************
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //changes the music button if music is not playing
+        if (!Controller.getInstance().isLetsMusicPlay()){
+            Controller.getInstance().animateButtonReleased(soundButton, R.drawable.no_sound);
+        }
+        else{
+            Controller.getInstance().animateButtonReleased(soundButton, R.drawable.sound);
+        }
     }
 }

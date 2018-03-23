@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -16,6 +17,7 @@ import butterknife.OnTouch;
 public class GameOver extends AppCompatActivity {
 
     @BindView(R.id.textView)TextView time;
+    @BindView(R.id.homeButton) ImageView homeButton;
 //    @BindView(R.id.checkYourselfButton) Button checkYourselfButton;
 
 
@@ -27,7 +29,7 @@ public class GameOver extends AppCompatActivity {
         ButterKnife.bind(this);
 
         //to be fixed
-        time.setText("It took you "+Controller.getInstance().getGameDuration()+" seconds");
+        time.setText("Congrats!\nIt took you only \n"+Controller.getInstance().getGameDuration()+" seconds");
 //        time.setText("It took you: "+Controller.getInstance().getGameDuration()%60+" minutes and" +
 //                " "+(Controller.getInstance().getGameDuration()-Controller.getInstance().getGameDuration()%60)+" seconds");
     }
@@ -49,6 +51,19 @@ public class GameOver extends AppCompatActivity {
 //        }
 //        return true;
 //    }
+    @OnTouch(R.id.homeButton)
+    public boolean touchHome(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            Controller.getInstance().animateButtonTouched(homeButton);
+        } else if (event.getAction() == MotionEvent.ACTION_UP) {
+            Controller.getInstance().animateButtonReleased(homeButton);
+            Intent intent = new Intent(this, WelcomeScreen.class);
+    //      startActivity(intent);
+            startActivity(intent,
+                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+        }
+        return true;
+    }
 
 
 }
